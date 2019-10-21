@@ -2,16 +2,16 @@
 
 @section('dashboard-title')
     <div class="row">
-        <div class="col-sm-9"><h5 class="font-weight-bold text-dark text-left">Usuarios</h5></div>
+        <div class="col-sm-9"><h5 class="pl-2 font-weight-bold text-white text-left">Usuarios</h5></div>
         @can('crear_usuarios')
             <div class="col-sm-3">
                 <div class="text-right">
-                    <button class="btn btn-dark" data-toggle="modal"
+                    <button class="btn btn-light" data-toggle="modal"
                             data-target="#registrar-usuario-modal">
                     <span class="icon">
                       <i class="fas fa-circle"></i>
                     </span>
-                        <span class="text">Nuevo registro</span>
+                        <span class="text font-weight-bold">Nuevo registro</span>
                     </button>
                 </div>
             </div>
@@ -36,7 +36,7 @@
             @foreach($usuarios as $usuario)
                 <tr class="text-center">
                     <th scope="row">{{ $usuario->id }}</th>
-                    <td>{{ $usuario->nombre }}</td>
+                    <td>{{ $usuario->name }}</td>
                     <td>{{ $usuario->email }}</td>
                     <td>{{ $usuario->created_at->format('d/m/y') }}</td>
                     <td>

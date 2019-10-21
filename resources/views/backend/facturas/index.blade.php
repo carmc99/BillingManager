@@ -2,16 +2,16 @@
 
 @section('dashboard-title')
     <div class="row">
-        <div class="col-sm-9"><h5 class="font-weight-bold text-dark text-left">Facturas</h5></div>
+        <div class="col-sm-9"><h5 class="pl-2 font-weight-bold text-left">Facturas</h5></div>
         @can('crear_facturas')
             <div class="col-sm-3">
                 <div class="text-right">
-                    <button class="btn btn-dark" data-toggle="modal"
+                    <button class="btn btn-light" data-toggle="modal"
                             data-target="#registrar-factura-modal">
                     <span class="icon">
                       <i class="fas fa-circle"></i>
                     </span>
-                        <span class="text">Nuevo registro</span>
+                        <span class="text font-weight-bold">Nuevo registro</span>
                     </button>
                 </div>
             </div>

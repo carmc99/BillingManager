@@ -10,11 +10,11 @@
                 </div>
             </div>
 
-            <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Panel de control</p>
+            <p class="text-white font-weight-bold text-uppercase px-3 small py-2 mb-0 bg-primary rounded-2">Panel de control</p>
 
             <ul class="nav flex-column bg-primery mb-0">
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-dark bg-light">
+                    <a href="{{ action('Backend\DashboardController@index') }}" class="nav-link text-dark bg-light">
                         Inicio
                     </a>
                 </li>
@@ -30,12 +30,12 @@
 
             </ul>
 
-            <p class="text-gray font-weight-bold text-uppercase px-3 small py-4 mb-0">Estadisticas</p>
+            <p class="text-white font-weight-bold text-uppercase px-3 small py-2 mb-0 bg-primary rounded-2">Estadisticas</p>
 
             <ul class="nav flex-column bg-white mb-0">
                 <li class="nav-item">
                     <a href="{{ action('Backend\StatsController@index') }}" class="nav-link text-dark bg-light">
-                        Registro
+                        Ver estadisticas
                     </a>
                 </li>
 

@@ -8,7 +8,7 @@
                 {{ csrf_field() }}
 
                 <label for="input-sede" class="control-label">
-                    <h5 class="m-0 font-weight-bold text-primary text">Registrar factura:</h5>
+                    <h5 class="m-0 font-weight-bold text-primary pl-2">Registrar factura:</h5>
                 </label>
                 <ul class="list-group">
                     <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -20,7 +20,7 @@
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         <label for="input-cliente" class="control-label">Cliente:</label>
                         <div class="col-md-9">
-                            <select class="form-group" name="cliente" id="cliente">
+                            <select class="form-control" name="cliente" id="cliente">
 
                             </select>
                         </div>
@@ -28,9 +28,9 @@
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         <label for="input-generador" class="control-label">Generador:</label>
                         <div class="col-md-9">
-                            <select class="form-group" name="cliente" id="cliente">
+                            <select class="form-control" name="cliente" id="cliente">
                                 <option value="solutech">Solutech</option>
-                                <option value="otro">Otro</option>
+                                <option value="otro">Quincomputo</option>
                             </select>
                         </div>
                     </li>
@@ -43,8 +43,7 @@
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         <label for="input-descripcion" class="control-label">Descripcion:</label>
                         <div class="col-md-9">
-                                <textarea class="form-group" name="descripcion" id="descripcion" cols="69" rows="5">
-
+                                <textarea class="form-control" name="descripcion" id="descripcion" cols="69" rows="5">
                                 </textarea>
                         </div>
                     </li>
@@ -57,7 +56,7 @@
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         <label for="input-valor" class="control-label">Archivo adjunto:</label>
                         <div class="col-md-9">
-                            <input type="file" name="adj-factura" id="adj-factura">
+                            <input type="file" class="form-control" name="adj-factura" id="adj-factura">
                         </div>
                     </li>
                     <button type="submit" class="btn btn-primary">Guardar</button>

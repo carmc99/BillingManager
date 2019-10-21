@@ -1,15 +1,14 @@
-@if(session()->has('success'))
+@if(session('message'))
     <div class="form-group">
         <div class="alert alert-success">
-            <span> {{session('success')}} </span>
+            <span> {{session('message')}} </span>
         </div>
     </div>
-
 @endif
-@if(session()->has('error'))
+@if(!empty($errors->first()))
     <div class="form-group">
         <div class="alert alert-danger">
-            <span> {{session('error')}} </span>
+            <span>{{ $errors->first() }}</span>
         </div>
     </div>
 @endif
