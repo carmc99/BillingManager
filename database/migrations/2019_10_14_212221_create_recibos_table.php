@@ -15,12 +15,12 @@ class CreateRecibosTable extends Migration
     {
         Schema::create('recibos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('factura_id');
             $table->foreign('user_id')
                 ->references('id')->on('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->unsignedInteger('factura_id');
             $table->foreign('factura_id')
                 ->references('id')->on('facturas')
                 ->onUpdate('cascade')
@@ -28,6 +28,7 @@ class CreateRecibosTable extends Migration
             $table->string('ruta_recibo');
             $table->string('descripcion');
             $table->timestamps();
+            $table->engine = 'InnoDB';
         });
     }
 

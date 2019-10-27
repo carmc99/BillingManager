@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('telefono_movil')->default('');
             $table->rememberToken();
             $table->timestamps();
+            $table->engine = 'InnoDB';
         });
     }
 
