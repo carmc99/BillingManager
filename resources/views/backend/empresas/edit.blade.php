@@ -20,7 +20,7 @@
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <label for="input-email" class="control-label font-weight-bold">Email:</label>
                 <div class="col-md-9">
-                    <input type="email" class="form-control" id="email" name="email" value="{{ $empresa->correo }}" required>
+                    <input type="email" class="form-control" id="correo" name="correo" value="{{ $empresa->correo }}" required>
                 </div>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">

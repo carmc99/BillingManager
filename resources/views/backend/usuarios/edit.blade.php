@@ -30,24 +30,6 @@
                     </div>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <label for="input-direccion" class="control-label font-weight-bold">Direccion:</label>
-                    <div class="col-md-9">
-                        <input type="text" class="form-control" id="direccion" name="direccion" value="{{ $usuario->direccion }}">
-                    </div>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <label for="input-telefono-fijo" class="control-label font-weight-bold">Telefono fijo:</label>
-                    <div class="col-md-9">
-                        <input type="text" class="form-control" id="telefono_fijo" name="telefono_fijo" value="{{ $usuario->telefono_fijo }}">
-                    </div>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <label for="input-telefono-movil" class="control-label font-weight-bold">Telefono movil:</label>
-                    <div class="col-md-9">
-                        <input type="text" class="form-control" id="telefono_movil" name="telefono_movil" value="{{ $usuario->telefono_movil }}">
-                    </div>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
                     <label for="input-rol" class="control-label font-weight-bold">Rol:</label>
                     <div class="col-md-9">
                         <select name="rol" id="rol" class="form-control" required>
@@ -55,6 +37,16 @@
                             <option value="Administrador">Administrador</option>
                         </select>
 
+                    </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <label for="input-empresa" class="control-label font-weight-bold">Empresa:</label>
+                    <div class="col-md-9">
+                        <select name="empresa" id="empresa" class="form-control" required>
+                            @foreach($empresas as $empresa)
+                                <option value="{{ $empresa->nit }}">{{ $empresa->nombre }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">

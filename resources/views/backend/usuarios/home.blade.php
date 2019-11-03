@@ -25,6 +25,7 @@
             <tr class="text-center">
                 <th scope="col">#</th>
                 <th scope="col">Nombre</th>
+                <th>Rol</th>
                 <th scope="col">Email</th>
                 <th>Fecha creación</th>
                 <th scope="col">Acciones</th>
@@ -35,6 +36,7 @@
                 <tr class="text-center">
                     <th scope="row">{{ $usuario->id }}</th>
                     <td>{{ $usuario->name }}</td>
+                    <td>{{ $usuario->getRoleNames()->first() }}</td>
                     <td>{{ $usuario->email }}</td>
                     <td>{{ $usuario->created_at->format('d/m/y') }}</td>
                     <td>

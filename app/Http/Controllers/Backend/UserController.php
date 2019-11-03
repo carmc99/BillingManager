@@ -6,8 +6,10 @@ use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
+use App\Models\Empresa;
 
 class UserController extends Controller
 {
@@ -34,7 +36,8 @@ class UserController extends Controller
         */
     public function create()
     {
-        return view('backend.usuarios.register');
+        $empresas = DB::table('empresas')->orderBy('nombre')->get();
+        return view('backend.usuarios.register', compact('empresas'));
     }
 
     /**
@@ -49,9 +52,7 @@ class UserController extends Controller
             'email' => 'required|min:3|max:50|unique:users,email',
             'identificacion' => 'min:3|max:30|required|unique:users,identificacion',
             'nombre' => 'min:3|max:80|required',
-            'direccion' => 'min:3|max:100',
-            'telefono_movil' => 'min:3|max:30',
-            'telefono_fijo' => 'min:3|max:30',
+            'empresa' => 'required|min:3|max:30',
             'contraseña' => 'min:6|required_with:confirmar_contraseña|same:confirmar_contraseña',
             'confirmar_contraseña' => 'min:6',
             'rol' => 'required'
@@ -60,9 +61,7 @@ class UserController extends Controller
         $usuario->name = $request->input('nombre');
         $usuario->identificacion = $request->input('identificacion');
         $usuario->email = $request->input('email');
-        $usuario->direccion = $request->input('direccion');
-        $usuario->telefono_movil = $request->input('telefono_movil');
-        $usuario->telefono_fijo = $request->input('telefono_fijo');
+        $usuario->empresa_nit = $request->input('empresa');
         $usuario->password = Hash::make($request->input('contraseña'));
         $usuario->save();
         $usuario->assignRole($request->input('rol'));
@@ -91,7 +90,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $usuario = User::findOrFail($id);
-        return view('backend.usuarios.edit', compact('usuario'));
+        $empresas = DB::table('empresas')->orderBy('nombre')->get();
+        return view('backend.usuarios.edit', compact('usuario', 'empresas'));
     }
 
     /**
@@ -107,18 +107,14 @@ class UserController extends Controller
             'email' => Rule::unique('users')->ignore($id),
             'identificacion' => Rule::unique('users')->ignore($id),
             'nombre' => 'min:3|max:80|required',
-            'direccion' => 'min:3|max:100',
-            'telefono_movil' => 'min:3|max:30',
-            'telefono_fijo' => 'min:3|max:30',
+            'empresa' => 'required|min:3|max:30',
             'rol' => 'required'
         ]);
         $usuario = User::findOrFail($id);
         $usuario->name = $request->input('nombre');
         $usuario->identificacion = $request->input('identificacion');
         $usuario->email = $request->input('email');
-        $usuario->direccion = $request->input('direccion');
-        $usuario->telefono_movil = $request->input('telefono_movil');
-        $usuario->telefono_fijo = $request->input('telefono_fijo');
+        $usuario->empresa_nit = $request->input('empresa');
         $usuario->update();
 
         return redirect()->back()->with('message', 'Registro: ' . $usuario->name . ' actualizado exitosamente');

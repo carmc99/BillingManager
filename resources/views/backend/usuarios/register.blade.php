@@ -10,9 +10,6 @@
     <form action="{{ action('Backend\UserController@store') }}" method="post">
         {{ csrf_field() }}
 
-        <label for="input-titulo" class="control-label">
-            <h5 class="m-0 font-weight-bold text-primary text-center pl-2">Registrar usuario:</h5>
-        </label>
         <ul class="list-group">
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <label for="input-nombre" class="control-label font-weight-bold">Nombre:</label>
@@ -33,21 +30,13 @@
                 </div>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                <label for="input-direccion" class="control-label font-weight-bold">Direccion:</label>
+                <label for="input-empresa" class="control-label font-weight-bold">Empresa:</label>
                 <div class="col-md-9">
-                    <input type="text" class="form-control" id="direccion" name="direccion">
-                </div>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <label for="input-telefono-fijo" class="control-label font-weight-bold">Telefono fijo:</label>
-                <div class="col-md-9">
-                    <input type="text" class="form-control" id="telefono_fijo" name="telefono_fijo">
-                </div>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <label for="input-telefono-movil" class="control-label font-weight-bold">Telefono movil:</label>
-                <div class="col-md-9">
-                    <input type="text" class="form-control" id="telefono_movil" name="telefono_movil">
+                    <select name="empresa" id="empresa" class="form-control" required>
+                        @foreach($empresas as $empresa)
+                        <option value="{{ $empresa->nit }}">{{ $empresa->nombre }}</option>
+                        @endforeach
+                    </select>
                 </div>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">

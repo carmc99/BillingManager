@@ -1,10 +1,13 @@
-@extends('layouts.app')
+@extends('backend.home')
 
-@section('content')
-    <div class="card shadow">
-        <div class="card-header m-0"><h5>Factura numero: {{ $factura->num_pago }}</h5></div>
-        <div class="card-body">
+@section('dashboard-title')
+    <div class="row">
+        <div class="col-sm-9"><h5 class="pl-2 font-weight-bold text-white text-left">Factura numero: {{ $factura->num_pago }}</h5></div>
+    </div>
+@endsection
 
-        </div>
+@section('dashboard-content')
+    <div class="card-body">
+
     </div>
 @endsection

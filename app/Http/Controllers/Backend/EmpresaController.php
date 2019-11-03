@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Empresa;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 class EmpresaController extends Controller
 {
@@ -33,34 +34,34 @@ class EmpresaController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-            $this->validate($request,[
-                'email' => 'required|min:3|max:50|unique:empresas,correo',
-                'nit' => 'min:3|max:30|required|unique:empresas,nit',
-                'nombre' => 'min:3|max:80|required',
-                'direccion' => 'min:3|max:100',
-                'telefono' => 'min:3|max:30',
-            ]);
+        $this->validate($request, [
+            'email' => 'required|min:3|max:50|unique:empresas,correo',
+            'nit' => 'min:3|max:30|required|unique:empresas,nit',
+            'nombre' => 'min:3|max:80|required',
+            'direccion' => 'min:3|max:100',
+            'telefono' => 'min:3|max:30',
+        ]);
 
-            $empresa = new Empresa();
-            $empresa->nit = $request->input('nit');
-            $empresa->correo = $request->input('email');
-            $empresa->nombre = $request->input('nombre');
-            $empresa->direccion = $request->input('direccion');
-            $empresa->telefono = $request->input('telefono');
-            $empresa->saveOrFail();
+        $empresa = new Empresa();
+        $empresa->nit = $request->input('nit');
+        $empresa->correo = $request->input('email');
+        $empresa->nombre = $request->input('nombre');
+        $empresa->direccion = $request->input('direccion');
+        $empresa->telefono = $request->input('telefono');
+        $empresa->saveOrFail();
 
-            return redirect()->back()->with('message', 'Registro ingresado exitosamente');
+        return redirect()->back()->with('message', 'Registro ingresado exitosamente');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -72,7 +73,7 @@ class EmpresaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -84,24 +85,42 @@ class EmpresaController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+
+
+        $this->validate($request, [
+            'correo' => 'required|min:3|max:50|' . Rule::unique('empresas')->ignore($id, 'nit'),
+            'nit' => 'min:3|max:30|required|'. Rule::unique('empresas')->ignore($id, 'nit'),
+            'nombre' => 'min:3|max:80|required',
+            'direccion' => 'min:3|max:100',
+            'telefono' => 'min:3|max:30',
+        ]);
+        DB::table('empresas')->where('nit', $id)->limit(1)
+            ->update([
+                'nit' => $request->input('nit'),
+                'correo' => $request->input('correo'),
+                'nombre' => $request->input('nombre'),
+                'direccion' => $request->input('direccion'),
+                'telefono' => $request->input('telefono'),
+        ]);
+
+        return redirect()->back()->with('message', 'Registro actualizado exitosamente');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $empresa = DB::table('empresas')->where('nit', $id)->first();
-
+        DB::table('empresas')->where('nit', $id)->limit(1)->delete();
+        return redirect()->back()->with('message', 'Registro eliminado exitosamente');
     }
 }

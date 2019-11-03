@@ -3,10 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Empresa extends Model
 {
     protected $table = 'empresas';
+
+    protected $fillable = ['nombre', 'nit', 'correo'];
 
     function users()
     {
