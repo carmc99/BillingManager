@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Factura;
+use App\Models\User;
+use Faker\Generator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Yoeunes\Toastr\Toastr;
@@ -21,6 +23,7 @@ class FacturaController extends Controller
     public function index()
     {
         $facturas = Factura::all();
+
         return view('backend.facturas.index', compact('facturas'));
     }
 
@@ -31,7 +34,7 @@ class FacturaController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.facturas.register');
     }
 
     /**
@@ -42,7 +45,20 @@ class FacturaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+
+        ]);
+        $factura = new Factura();
+        $factura->num_pago = $request->input('');
+        $factura->empresa = $request->input('');
+        $factura->descripcion = $request->input('empresa');
+        $factura->valor_total = $request->input('');
+        $factura->fecha_facturacion = $request->input('');
+        $factura->estado = false;
+        $factura->saveOrFail();
+
+
+        return redirect()->back()->with('message', 'Registro ingresado exitosamente');
     }
 
     /**
@@ -55,7 +71,6 @@ class FacturaController extends Controller
     {
         $factura = Factura::findOrFail($id);
 
-        notify()->info('Are you the 6 fingered man?');
         return view('backend.facturas.show', compact('factura'));
     }
 
@@ -80,7 +95,9 @@ class FacturaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $factura = Factura::findOrfail($id);
+
+        return redirect()->back()->with('message', 'Registro: ' . $factura->num_pago . ' actualizado exitosamente');
     }
 
     /**

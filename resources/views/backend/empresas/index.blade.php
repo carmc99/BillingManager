@@ -2,11 +2,11 @@
 
 @section('dashboard-title')
     <div class="row">
-        <div class="col-sm-9"><h5 class="pl-2 font-weight-bold text-white text-left">Usuarios</h5></div>
-        @can('crear_usuarios')
+        <div class="col-sm-9"><h5 class="pl-2 font-weight-bold text-left">Empresas</h5></div>
+        @can('crear_empresas')
             <div class="col-sm-3">
                 <div class="text-right">
-                    <a class="btn btn-light" href="{{ action('Backend\UserController@create') }}">
+                    <a class="btn btn-light" href="{{ action('Backend\EmpresaController@create') }}">
                     <span class="icon">
                       <i class="fas fa-circle"></i>
                     </span>
@@ -23,36 +23,38 @@
         <table class="table table-responsive-lg" id="tabla-facturas">
             <thead>
             <tr class="text-center">
-                <th scope="col">#</th>
+                <th scope="col">Nit</th>
                 <th scope="col">Nombre</th>
-                <th scope="col">Email</th>
-                <th>Fecha creación</th>
+                <th scope="col">Direccion</th>
+                <th scope="col">Telefono</th>
+                <th>Correo</th>
                 <th scope="col">Acciones</th>
             </tr>
             </thead>
             <tbody>
-            @foreach($usuarios as $usuario)
+            @foreach($empresas as $empresa)
                 <tr class="text-center">
-                    <th scope="row">{{ $usuario->id }}</th>
-                    <td>{{ $usuario->name }}</td>
-                    <td>{{ $usuario->email }}</td>
-                    <td>{{ $usuario->created_at->format('d/m/y') }}</td>
+                    <th scope="row">{{ $empresa->nit }}</th>
+                    <td>{{ $empresa->nombre }}</td>
+                    <td>{{ $empresa->direccion }}</td>
+                    <td>{{ $empresa->telefono }}</td>
+                    <td>{{ $empresa->correo }}</td>
                     <td>
                         <div class="btn-group" role="group" aria-label="">
-                            @can('crear_usuarios')
-                                <a href="{{ action('Backend\UserController@show', $usuario->id) }}"
+                            @can('ver_empresas')
+                                <a href="{{ action('Backend\EmpresaController@show', $empresa->nit) }}"
                                    name="confirm_item" class="btn btn-primary"
                                    data-toggle="tooltip" data-placement="top" title="ver"><b>Ver</b>
                                 </a>
                             @endcan
-                            @can('editar_usuarios')
-                                <a href="{{ action('Backend\UserController@edit', $usuario->id) }}"
+                            @can('editar_empresas')
+                                <a href="{{ action('Backend\EmpresaController@edit', $empresa->nit) }}"
                                    name="confirm_item" class="btn btn-warning"
                                    data-toggle="tooltip" data-placement="top" title=""><b>Editar</b>
                                 </a>
                             @endcan
-                            @can('eliminar_usuarios')
-                                <form action="{{ action('Backend\UserController@destroy', $usuario->id) }}"
+                            @can('eliminar_empresas')
+                                <form action="{{ action('Backend\EmpresaController@destroy', $empresa->nit) }}"
                                       method="POST">
                                     {{method_field('DELETE')}}
                                     @csrf
@@ -67,3 +69,4 @@
         </table>
     </div>
 @endsection
+

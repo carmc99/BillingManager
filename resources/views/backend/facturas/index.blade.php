@@ -6,13 +6,12 @@
         @can('crear_facturas')
             <div class="col-sm-3">
                 <div class="text-right">
-                    <button class="btn btn-light" data-toggle="modal"
-                            data-target="#registrar-factura-modal">
+                    <a class="btn btn-light" href="{{ action('Backend\FacturaController@create') }}">
                     <span class="icon">
                       <i class="fas fa-circle"></i>
                     </span>
                         <span class="text font-weight-bold">Nuevo registro</span>
-                    </button>
+                    </a>
                 </div>
             </div>
         @endcan
@@ -20,9 +19,8 @@
 @endsection
 
 @section('dashboard-content')
-    @include('backend.facturas.register')
     <div class="card-body">
-        <table class="table" id="tabla-facturas">
+        <table class="table table-responsive-lg" id="tabla-facturas">
             <thead>
             <tr class="text-center">
                 <th scope="col">#</th>

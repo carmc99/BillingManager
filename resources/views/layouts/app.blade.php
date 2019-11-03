@@ -39,7 +39,7 @@
     </nav>
 
     <main class="py-3">
-        <div class="container">
+        <div class="container-fluid">
             @include('layouts.messages.messages')
             @yield('content')
         </div>

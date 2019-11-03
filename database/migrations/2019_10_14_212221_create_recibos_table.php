@@ -15,16 +15,16 @@ class CreateRecibosTable extends Migration
     {
         Schema::create('recibos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
+            $table->string('empresa_nit', 30);
             $table->unsignedBigInteger('factura_id');
-            $table->foreign('user_id')
-                ->references('id')->on('users')
+            $table->foreign('empresa_nit')
+                ->references('nit')->on('empresas')
                 ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->onDelete('restrict');
             $table->foreign('factura_id')
                 ->references('id')->on('facturas')
                 ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->onDelete('restrict');
             $table->string('ruta_recibo');
             $table->string('descripcion');
             $table->timestamps();

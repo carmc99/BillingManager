@@ -19,10 +19,12 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique()->nullable(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('direccion')->default('');
-            $table->string('identificacion', 30)->unique()->nullable(false);
-            $table->string('telefono_fijo')->default('');
-            $table->string('telefono_movil')->default('');
+            $table->string('identificacion', 30)->unique();
+            $table->string('empresa_nit', 30);
+            $table->foreign('empresa_nit')->references('nit')
+                ->on('empresas')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
             $table->rememberToken();
             $table->timestamps();
             $table->engine = 'InnoDB';

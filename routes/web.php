@@ -28,7 +28,9 @@ Route::group(['middleware' => ['role_or_permission:Administrador']], function ()
     Route::resource('adminfacturas', 'Backend\FacturaController');
     Route::resource('usuarios', 'Backend\UserController');
     Route::resource('estadisticas', 'Backend\StatsController');
+    Route::resource('empresas','Backend\EmpresaController');
 });
+
 
 
 

@@ -15,17 +15,17 @@ class CreateFacturasTable extends Migration
     {
         Schema::create('facturas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')
-                ->references('id')->on('users')
+            $table->string('empresa_nit');
+            $table->foreign('empresa_nit')
+                ->references('nit')->on('empresas')
                 ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->onDelete('restrict');
             $table->string('num_pago');
             $table->string('ruta_factura');
             $table->string('empresa'); //Generador solutech o
-            $table->text('descripcion');
+            $table->text('descripcion')->nullable();
             $table->string('valor_total');
-            $table->string('estado',200);
+            $table->boolean('estado');
             $table->dateTime('fecha_facturacion');
             $table->timestamps();
             $table->engine = 'InnoDB';

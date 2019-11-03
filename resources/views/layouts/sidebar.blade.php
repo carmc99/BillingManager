@@ -24,6 +24,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ action('Backend\EmpresaController@index') }}" class="nav-link text-dark bg-light">
+                        Empresas
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ action('Backend\FacturaController@index') }}" class="nav-link text-dark bg-light">
                         Facturas</a>
                 </li>
