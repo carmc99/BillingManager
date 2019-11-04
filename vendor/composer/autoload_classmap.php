@@ -6,7 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'App\\Client' => $baseDir . '/app/Client.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
@@ -16,6 +15,7 @@ return array(
     'App\\Http\\Controllers\\Auth\\ResetPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ResetPasswordController.php',
     'App\\Http\\Controllers\\Auth\\VerificationController' => $baseDir . '/app/Http/Controllers/Auth/VerificationController.php',
     'App\\Http\\Controllers\\Backend\\DashboardController' => $baseDir . '/app/Http/Controllers/Backend/DashboardController.php',
+    'App\\Http\\Controllers\\Backend\\EmpresaController' => $baseDir . '/app/Http/Controllers/Backend/EmpresaController.php',
     'App\\Http\\Controllers\\Backend\\FacturaController' => $baseDir . '/app/Http/Controllers/Backend/FacturaController.php',
     'App\\Http\\Controllers\\Backend\\StatsController' => $baseDir . '/app/Http/Controllers/Backend/StatsController.php',
     'App\\Http\\Controllers\\Backend\\UserController' => $baseDir . '/app/Http/Controllers/Backend/UserController.php',
@@ -32,6 +32,7 @@ return array(
     'App\\Http\\Middleware\\TrimStrings' => $baseDir . '/app/Http/Middleware/TrimStrings.php',
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+    'App\\Models\\Empresa' => $baseDir . '/app/Models/Empresa.php',
     'App\\Models\\Factura' => $baseDir . '/app/Models/Factura.php',
     'App\\Models\\Recibo' => $baseDir . '/app/Models/Recibo.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
@@ -201,6 +202,7 @@ return array(
     'Egulias\\EmailValidator\\Warning\\QuotedString' => $vendorDir . '/egulias/email-validator/EmailValidator/Warning/QuotedString.php',
     'Egulias\\EmailValidator\\Warning\\TLD' => $vendorDir . '/egulias/email-validator/EmailValidator/Warning/TLD.php',
     'Egulias\\EmailValidator\\Warning\\Warning' => $vendorDir . '/egulias/email-validator/EmailValidator/Warning/Warning.php',
+    'EmpresaTableSeeder' => $baseDir . '/database/seeds/EmpresaTableSeeder.php',
     'Facade\\FlareClient\\Api' => $vendorDir . '/facade/flare-client-php/src/Api.php',
     'Facade\\FlareClient\\Concerns\\HasContext' => $vendorDir . '/facade/flare-client-php/src/Concerns/HasContext.php',
     'Facade\\FlareClient\\Concerns\\UsesTime' => $vendorDir . '/facade/flare-client-php/src/Concerns/UsesTime.php',

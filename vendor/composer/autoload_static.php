@@ -420,7 +420,6 @@ class ComposerStaticInitb31aae73b6a5cfa3369d4aef35fa6ebc
     );
 
     public static $classMap = array (
-        'App\\Client' => __DIR__ . '/../..' . '/app/Client.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
@@ -430,6 +429,7 @@ class ComposerStaticInitb31aae73b6a5cfa3369d4aef35fa6ebc
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\Backend\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/DashboardController.php',
+        'App\\Http\\Controllers\\Backend\\EmpresaController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/EmpresaController.php',
         'App\\Http\\Controllers\\Backend\\FacturaController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/FacturaController.php',
         'App\\Http\\Controllers\\Backend\\StatsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/StatsController.php',
         'App\\Http\\Controllers\\Backend\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/UserController.php',
@@ -446,6 +446,7 @@ class ComposerStaticInitb31aae73b6a5cfa3369d4aef35fa6ebc
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Models\\Empresa' => __DIR__ . '/../..' . '/app/Models/Empresa.php',
         'App\\Models\\Factura' => __DIR__ . '/../..' . '/app/Models/Factura.php',
         'App\\Models\\Recibo' => __DIR__ . '/../..' . '/app/Models/Recibo.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
@@ -615,6 +616,7 @@ class ComposerStaticInitb31aae73b6a5cfa3369d4aef35fa6ebc
         'Egulias\\EmailValidator\\Warning\\QuotedString' => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator/Warning/QuotedString.php',
         'Egulias\\EmailValidator\\Warning\\TLD' => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator/Warning/TLD.php',
         'Egulias\\EmailValidator\\Warning\\Warning' => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator/Warning/Warning.php',
+        'EmpresaTableSeeder' => __DIR__ . '/../..' . '/database/seeds/EmpresaTableSeeder.php',
         'Facade\\FlareClient\\Api' => __DIR__ . '/..' . '/facade/flare-client-php/src/Api.php',
         'Facade\\FlareClient\\Concerns\\HasContext' => __DIR__ . '/..' . '/facade/flare-client-php/src/Concerns/HasContext.php',
         'Facade\\FlareClient\\Concerns\\UsesTime' => __DIR__ . '/..' . '/facade/flare-client-php/src/Concerns/UsesTime.php',

@@ -20,7 +20,7 @@ class CreateFacturasTable extends Migration
                 ->references('nit')->on('empresas')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
-            $table->string('num_pago');
+            $table->string('num_factura');
             $table->string('ruta_factura');
             $table->string('empresa'); //Generador solutech o
             $table->text('descripcion')->nullable();

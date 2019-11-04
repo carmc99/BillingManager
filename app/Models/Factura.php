@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Factura extends Model
 {
@@ -12,5 +13,14 @@ class Factura extends Model
 
     function recibo(){
         $this->hasOne('App\Models\Recibo');
+    }
+
+    function guardarArchivo($file, $cliente)
+    {
+        $rutaFolderCliente = storage_path($cliente);
+        if (!file_exists($rutaFolderCliente)) {
+            $ruta = Storage::disk('local')->put($cliente,  $file);
+        }
+        return $ruta;
     }
 }

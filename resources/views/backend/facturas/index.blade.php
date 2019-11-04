@@ -28,6 +28,7 @@
                 <th scope="col">Descripcion</th>
                 <th scope="col">Valor total</th>
                 <th>Fecha creación</th>
+                <th>Descargar</th>
                 <th scope="col">Acciones</th>
             </tr>
             </thead>
@@ -35,15 +36,16 @@
             @foreach($facturas as $factura)
                 <tr class="text-center">
                     <th scope="row">{{ $factura->num_pago }}</th>
-                    @if($factura->estado == 'Pagado')
-                        <td class="btn btn-success">{{ $factura->estado }}</td>
+                    @if($factura->estado)
+                        <td class="btn btn-success">Pago</td>
                     @else
-                        <td class="badge badge-danger">{{ $factura->estado }}</td>
+                        <td class="badge badge-danger">Pendiente</td>
                     @endif
 
                     <td>{{ $factura->descripcion }}</td>
                     <td>{{ $factura->valor_total }}</td>
                     <td>{{ $factura->created_at->format('d/m/y') }}</td>
+                    <td>Descargar</td>
                     <td>
                         <div class="btn-group" role="group" aria-label="">
                             @can('ver_facturas')

@@ -7,7 +7,10 @@ use App\Models\User;
 use Faker\Generator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Yoeunes\Toastr\Toastr;
+use Illuminate\Support\Facades\Storage;
+
 class FacturaController extends Controller
 {
     /**
@@ -34,7 +37,8 @@ class FacturaController extends Controller
      */
     public function create()
     {
-        return view('backend.facturas.register');
+        $empresas = DB::table('empresas')->orderBy('nombre')->get();
+        return view('backend.facturas.register', compact('empresas'));
     }
 
     /**
@@ -45,15 +49,24 @@ class FacturaController extends Controller
      */
     public function store(Request $request)
     {
+        /*
         $this->validate($request, [
-
+            'num-factura' => 'min:3|max:30|required|unique:facturas,num_factura',
+            'cliente' => 'required|min:3|max:30',
+            'generador' => 'required|min:3|max:60',
+            'descripcion' => 'max:300',
+            'fecha-factura' => 'required|date',
+            'file' => 'required|max:10000|mimes:doc,docx,pdf'
         ]);
+*/
         $factura = new Factura();
-        $factura->num_pago = $request->input('');
-        $factura->empresa = $request->input('');
-        $factura->descripcion = $request->input('empresa');
-        $factura->valor_total = $request->input('');
-        $factura->fecha_facturacion = $request->input('');
+        $factura->num_factura = $request->input('num-factura');
+        $factura->empresa_nit = $request->input('cliente');
+        $factura->descripcion = $request->input('descripcion');
+        $factura->valor_total = $request->input('valor');
+        $factura->empresa = $request->input('generador');
+        $factura->fecha_facturacion = $request->input('fecha-factura');
+        $factura->ruta_factura = $factura->guardarArchivo($request->file('file'), $request->input('cliente'));
         $factura->estado = false;
         $factura->saveOrFail();
 
