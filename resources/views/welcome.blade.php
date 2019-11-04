@@ -77,7 +77,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Solutech System
+                    S  I  G  E  E  F
                 </div>
             </div>
         </div>

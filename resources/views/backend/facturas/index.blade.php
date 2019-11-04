@@ -28,14 +28,14 @@
                 <th scope="col">Descripcion</th>
                 <th scope="col">Valor total</th>
                 <th>Fecha creación</th>
-                <th>Descargar</th>
+                <th>Adjunto</th>
                 <th scope="col">Acciones</th>
             </tr>
             </thead>
             <tbody>
             @foreach($facturas as $factura)
                 <tr class="text-center">
-                    <th scope="row">{{ $factura->num_pago }}</th>
+                    <th scope="row">{{ $factura->num_factura }}</th>
                     @if($factura->estado)
                         <td class="badge badge-success">Pago</td>
                     @else
