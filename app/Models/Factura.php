@@ -19,7 +19,7 @@ class Factura extends Model
     {
         $rutaFolderCliente = storage_path($cliente);
         if (!file_exists($rutaFolderCliente)) {
-            $ruta = Storage::disk('local')->put($cliente,  $file);
+            $ruta = Storage::disk('public')->put($cliente,  $file);
         }
         return $ruta;
     }

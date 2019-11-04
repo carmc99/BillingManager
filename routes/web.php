@@ -29,8 +29,5 @@ Route::group(['middleware' => ['role_or_permission:Administrador']], function ()
     Route::resource('usuarios', 'Backend\UserController');
     Route::resource('estadisticas', 'Backend\StatsController');
     Route::resource('empresas','Backend\EmpresaController');
+    Route::get('download/{filename}', 'Backend\FacturaController@getFile');
 });
-
-
-
-

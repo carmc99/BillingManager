@@ -45,7 +45,7 @@
                     <td>{{ $factura->descripcion }}</td>
                     <td>{{ $factura->valor_total }}</td>
                     <td>{{ $factura->created_at->format('d/m/y') }}</td>
-                    <td>Descargar</td>
+                    <td><a href="{{ action('Backend\FacturaController@getFile', $factura->id) }}">Descargar</a></td>
                     <td>
                         <div class="btn-group" role="group" aria-label="">
                             @can('ver_facturas')

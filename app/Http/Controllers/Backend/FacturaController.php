@@ -26,7 +26,6 @@ class FacturaController extends Controller
     public function index()
     {
         $facturas = Factura::all();
-
         return view('backend.facturas.index', compact('facturas'));
     }
 
@@ -83,7 +82,6 @@ class FacturaController extends Controller
     public function show($id)
     {
         $factura = Factura::findOrFail($id);
-
         return view('backend.facturas.show', compact('factura'));
     }
 
@@ -123,5 +121,11 @@ class FacturaController extends Controller
     {
         Factura::findOrfail($id)->delete();
         return redirect()->back();
+    }
+
+    public function getFile($id){
+        $factura = Factura::findOrFail($id);
+        $file = storage_path() . '/app/public/' . $factura->ruta_factura;
+        return response()->download($file);
     }
 }

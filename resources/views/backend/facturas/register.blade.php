@@ -10,10 +10,6 @@
     <form action="{{ action('Backend\FacturaController@store') }}" method="post" accept-charset="UTF-8"
           enctype="multipart/form-data">
         {{ csrf_field() }}
-
-        <label for="input-sede" class="control-label">
-            <h5 class="m-0 font-weight-bold text-primary pl-2">Registrar factura:</h5>
-        </label>
         <ul class="list-group">
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <label for="input-num-factura" class="control-label">Número factura:</label>
