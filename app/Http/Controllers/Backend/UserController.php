@@ -103,12 +103,15 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $this->validate($request, [
             'email' => Rule::unique('users')->ignore($id),
             'identificacion' => Rule::unique('users')->ignore($id),
             'nombre' => 'min:3|max:80|required',
             'empresa' => 'required|min:3|max:30',
-            'rol' => 'required'
+            'rol' => 'required',
+            'contraseña' => 'sometimes',
+            'confirmar_contraseña' => 'sometimes'
         ]);
         $usuario = User::findOrFail($id);
         $usuario->name = $request->input('nombre');

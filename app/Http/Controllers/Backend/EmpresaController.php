@@ -15,6 +15,12 @@ class EmpresaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $empresas = Empresa::all();
@@ -91,8 +97,6 @@ class EmpresaController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-
         $this->validate($request, [
             'correo' => 'required|min:3|max:50|' . Rule::unique('empresas')->ignore($id, 'nit'),
             'nit' => 'min:3|max:30|required|'. Rule::unique('empresas')->ignore($id, 'nit'),

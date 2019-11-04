@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['role_or_permission:estandar|ver_facturas']], function () {
     Route::resource('factura', 'Frontend\FacturaController');
+    Route::get('down/{filename}', 'Frontend\FacturaController@getFactura');
 });
 
 Route::group(['middleware' => ['role_or_permission:Administrador']], function () {

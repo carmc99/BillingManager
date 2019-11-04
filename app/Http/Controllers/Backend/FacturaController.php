@@ -93,8 +93,9 @@ class FacturaController extends Controller
      */
     public function edit($id)
     {
+        $empresas = DB::table('empresas')->orderBy('nombre')->get();
         $factura = Factura::findOrFail($id);
-        return view('backend.facturas.edit', compact('factura'));
+        return view('backend.facturas.edit', compact('factura', 'empresas'));
     }
 
     /**

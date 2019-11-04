@@ -45,7 +45,7 @@
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <label for="input-descripcion" class="control-label">Descripcion:</label>
                 <div class="col-md-9">
-                    <textarea class="form-control" name="descripcion" id="descripcion" cols="69" rows="5">
+                    <textarea class="form-control" name="descripcion" id="descripcion" rows="3">
                     </textarea>
                 </div>
             </li>

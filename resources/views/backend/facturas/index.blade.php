@@ -37,7 +37,7 @@
                 <tr class="text-center">
                     <th scope="row">{{ $factura->num_pago }}</th>
                     @if($factura->estado)
-                        <td class="btn btn-success">Pago</td>
+                        <td class="badge badge-success">Pago</td>
                     @else
                         <td class="badge badge-danger">Pendiente</td>
                     @endif

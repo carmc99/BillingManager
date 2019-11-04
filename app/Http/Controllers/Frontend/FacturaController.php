@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Frontend;
 use App\Models\Factura;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Yoeunes\Toastr\Toastr;
+
 class FacturaController extends Controller
 {
     /**
@@ -21,16 +24,21 @@ class FacturaController extends Controller
 
     public function index()
     {
-        $facturas = Factura::all();
+        $empresa = Auth::user()->empresa_nit;
+        $facturas = DB::table('facturas')->where('empresa_nit', '=',$empresa)->get();
         return view('frontend.facturas.index', compact('facturas'));
     }
 
     public function show($id)
     {
         $factura = Factura::findOrFail($id);
-
-        notify()->info('Are you the 6 fingered man?');
         return view('frontend.facturas.show', compact('factura'));
+    }
+
+    public function getFactura($id){
+        $factura = Factura::findOrFail($id);
+        $file = storage_path() . '/app/public/' . $factura->ruta_factura;
+        return response()->download($file);
     }
 
 }
