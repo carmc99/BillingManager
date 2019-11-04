@@ -20,7 +20,6 @@ class CheckRoleMiddleware
         {
             return redirect()->action('Backend\DashboardController@index');
         }
-
         return $next($request);
     }
 }

@@ -5,6 +5,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ action('Frontend\FacturaController@index') }}">Mis facturas</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ action('Frontend\ReciboController@index') }}">Mis recibos</a>
+            </li>
         </ul>
     @endif
 <!-- Right Side Of Navbar -->

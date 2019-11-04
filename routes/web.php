@@ -20,8 +20,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['role_or_permission:estandar|ver_facturas']], function () {
-    Route::resource('factura', 'Frontend\FacturaController');
+    Route::resource('facturas', 'Frontend\FacturaController');
     Route::get('down/{filename}', 'Frontend\FacturaController@getFactura');
+    Route::resource('recibos', 'Frontend\ReciboController');
 });
 
 Route::group(['middleware' => ['role_or_permission:Administrador']], function () {
@@ -31,4 +32,5 @@ Route::group(['middleware' => ['role_or_permission:Administrador']], function ()
     Route::resource('estadisticas', 'Backend\StatsController');
     Route::resource('empresas','Backend\EmpresaController');
     Route::get('download/{filename}', 'Backend\FacturaController@getFile');
+    Route::resource('adminrecibos', 'Backend\ReciboController');
 });
