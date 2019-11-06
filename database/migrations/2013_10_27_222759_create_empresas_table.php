@@ -19,6 +19,7 @@ class CreateEmpresasTable extends Migration
             $table->string('direccion', 255)->default('');
             $table->string('telefono', 50)->default('');
             $table->string('correo', 200)->default('');
+            $table->string('ruta_logo')->default('');
             $table->timestamps();
             $table->engine = 'InnoDB';
         });

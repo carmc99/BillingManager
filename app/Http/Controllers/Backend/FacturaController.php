@@ -48,7 +48,7 @@ class FacturaController extends Controller
      */
     public function store(Request $request)
     {
-        /*
+
         $this->validate($request, [
             'num-factura' => 'min:3|max:30|required|unique:facturas,num_factura',
             'cliente' => 'required|min:3|max:30',
@@ -57,7 +57,7 @@ class FacturaController extends Controller
             'fecha-factura' => 'required|date',
             'file' => 'required|max:10000|mimes:doc,docx,pdf'
         ]);
-*/
+
         $factura = new Factura();
         $factura->num_factura = $request->input('num-factura');
         $factura->empresa_nit = $request->input('cliente');

@@ -56,9 +56,9 @@
                 </div>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                <label for="input-valor" class="control-label">Archivo adjunto:</label>
+                <label for="input-valor" class="control-label">Archivo adjunto (Max: 10 mb):</label>
                 <div class="col-md-9">
-                    <input type="file" class="form-control" name="file" id="file">
+                    <input type="file" class="form-group" name="file" id="file">
                 </div>
             </li>
             <button type="submit" class="btn btn-primary">Guardar</button>

@@ -101,8 +101,8 @@ class EmpresaController extends Controller
             'correo' => 'required|min:3|max:50|' . Rule::unique('empresas')->ignore($id, 'nit'),
             'nit' => 'min:3|max:30|required|'. Rule::unique('empresas')->ignore($id, 'nit'),
             'nombre' => 'min:3|max:80|required',
-            'direccion' => 'min:3|max:100',
-            'telefono' => 'min:3|max:30',
+            'direccion' => 'max:100',
+            'telefono' => 'max:30',
         ]);
         DB::table('empresas')->where('nit', $id)->limit(1)
             ->update([
