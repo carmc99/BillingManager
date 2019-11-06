@@ -9,7 +9,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <table class="table" id="tabla-facturas">
+                <table class="table table-responsive-lg" id="tabla-facturas">
                     <thead>
                     <tr class="text-center">
                         <th scope="col">#</th>

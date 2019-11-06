@@ -7,9 +7,6 @@
             <div class="col-sm-3">
                 <div class="text-right">
                     <a class="btn btn-light" href="{{ action('Backend\UserController@create') }}">
-                    <span class="icon">
-                      <i class="fas fa-circle"></i>
-                    </span>
                         <span class="text font-weight-bold">Nuevo registro</span>
                     </a>
                 </div>

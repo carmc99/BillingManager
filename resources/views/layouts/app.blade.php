@@ -27,7 +27,6 @@
 
             <a class="navbar-brand" href="{{ action('HomeController@index') }}">
                 <img src="https://solutechsystem.co/wp-content/uploads/2019/05/logo-web-nuevo-ok.png" data-at2x="https://solutechsystem.co/wp-content/uploads/2019/05/logo-web-nuevo-big.png" alt="Solutech System | Soporte Técnico Integral" class="logo-mobile" style="max-width: 80px;">
-
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false"

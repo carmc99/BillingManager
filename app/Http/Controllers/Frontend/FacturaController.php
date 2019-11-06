@@ -38,7 +38,11 @@ class FacturaController extends Controller
     public function getFactura($id){
         $factura = Factura::findOrFail($id);
         $file = storage_path() . '/app/public/' . $factura->ruta_factura;
-        return response()->download($file);
+        if(file_exists($file))
+        {
+            return response()->download($file);
+        }
+        return abort(404);
     }
 
 }
