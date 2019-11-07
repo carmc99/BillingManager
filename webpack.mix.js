@@ -19,6 +19,7 @@ mix.scripts([
 ], 'public/js/app.js');
 
 mix.styles([
+    'resources/vendor/css/login.css',
     'resources/vendor/bootstrap/css/bootstrap.min.css',
     'resources/sass/app.scss',
 ], 'public/css/app.css');

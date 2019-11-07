@@ -63,21 +63,30 @@
             }
         </style>
     </head>
-    <body>
+    <body class="bg-test">
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
                         <a href="{{ action('HomeController@index') }}">Inicio</a>
                     @else
-                        <a href="{{ route('login') }}">Ingresar</a>
+                        <a href="{{ route('login') }}"><b>Ingresar</b></a>
                     @endauth
                 </div>
             @endif
-
+                <style>
+                    .bg-test {
+                        background-image: url('http://digitalimagemakerworld.com/images/business-wallpaper/36365549-business-wallpaper.jpg');
+                        background-size: cover;
+                        background-position: center;
+                    }
+                </style>
             <div class="content">
-                <div class="title m-b-md">
-                    S  I  G  E  E  F
+                <div class="title">
+                    <h3>
+                        S  I  G  E  E  F
+                    </h3>
+
                 </div>
             </div>
         </div>
