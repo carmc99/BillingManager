@@ -35,7 +35,7 @@
                     <td>{{ $usuario->name }}</td>
                     <td>{{ $usuario->getRoleNames()->first() }}</td>
                     <td>{{ $usuario->email }}</td>
-                    <td>{{ $usuario->created_at->format('d/m/y') }}</td>
+                    <td>{{ date('d/M/Y', strtotime($usuario->created_at)) }}</td>
                     <td>
                         <div class="btn-group" role="group" aria-label="">
                             @can('crear_usuarios')

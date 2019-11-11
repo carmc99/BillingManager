@@ -2,8 +2,8 @@
 
 @section('dashboard-title')
     <div class="row">
-        <div class="col-sm-9"><h5 class="font-weight-bold text-white  text-left">Factura
-                numero: {{ $recibo->num_pago }}</h5></div>
+        <div class="col-sm-9"><h5 class="font-weight-bold text-white  text-left">Recibo
+                numero: {{ $recibo->num_recibo }}</h5></div>
     </div>
 @endsection
 

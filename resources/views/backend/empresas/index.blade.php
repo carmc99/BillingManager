@@ -25,6 +25,7 @@
                 <th scope="col">Direccion</th>
                 <th scope="col">Telefono</th>
                 <th>Correo</th>
+                <th>Fecha creación</th>
                 <th scope="col">Acciones</th>
             </tr>
             </thead>
@@ -36,6 +37,7 @@
                     <td>{{ $empresa->direccion }}</td>
                     <td>{{ $empresa->telefono }}</td>
                     <td>{{ $empresa->correo }}</td>
+                    <td>{{ date('d/M/Y', strtotime($empresa->created_at)) }}</td>
                     <td>
                         <div class="btn-group" role="group" aria-label="">
                             @can('ver_empresas')
