@@ -12,7 +12,7 @@ class Factura extends Model
     }
 
     function recibo(){
-        return $this->hasOne('App\Models\Recibo');
+        return $this->hasOne('App\Models\Recibo','factura_id','num_factura');
     }
 
     function empresaGeneradora(){

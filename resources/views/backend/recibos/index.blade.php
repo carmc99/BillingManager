@@ -23,11 +23,11 @@
             <tbody>
             @foreach($recibos as $recibo)
                 <tr class="text-center">
-                    <th scope="row">1</th>
-                    <td></td>
+                    <th scope="row">{{ $recibo->factura->num_factura }}</th>
+                    <td>{{ $recibo->empresa->nombre }}</td>
                     <td>{{ $recibo->descripcion }}</td>
-                    <td>{{ $recibo->created_at->format('d/m/y') }}</td>
-                    <td><a href="{{ action('Backend\RecibosController@getFile', $recibo->id) }}">Descargar</a></td>
+                    <td>{{ date('d/M/Y', strtotime($recibo->created_at)) }}</td>
+                    <td><a href="{{ action('Backend\ReciboController@getFile', $recibo->id) }}">Descargar</a></td>
                     <td>
                         <div class="btn-group" role="group" aria-label="">
                             @can('ver_recibos')

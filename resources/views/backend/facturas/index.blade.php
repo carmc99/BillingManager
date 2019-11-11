@@ -21,6 +21,7 @@
             <thead>
             <tr class="text-center">
                 <th scope="col">#</th>
+                <th scope="col">Empresa</th>
                 <th scope="col">Estado</th>
                 <th scope="col">Descripcion</th>
                 <th scope="col">Valor total</th>
@@ -33,6 +34,7 @@
             @foreach($facturas as $factura)
                 <tr class="text-center">
                     <th scope="row">{{ $factura->num_factura }}</th>
+                    <th scope="row">{{ $factura->empresa->nombre }}</th>
                     @if($factura->estado)
                         <td class="badge badge-success">Pago</td>
                     @else
@@ -41,7 +43,7 @@
 
                     <td>{{ $factura->descripcion }}</td>
                     <td>{{ $factura->valor_total }}</td>
-                    <td>{{ $factura->created_at->format('d/m/y') }}</td>
+                    <td>{{ date('d/M/Y', strtotime($factura->created_at)) }}</td>
                     <td><a href="{{ action('Backend\FacturaController@getFile', $factura->id) }}">Descargar</a></td>
                     <td>
                         <div class="btn-group" role="group" aria-label="">

@@ -3,7 +3,7 @@
 @section('dashboard-title')
     <div class="row">
         <div class="col-sm-9"><h5 class="font-weight-bold text-white  text-left">Factura
-                numero: {{ $factura->num_pago }}</h5></div>
+                numero: {{ $factura->num_factura }}</h5></div>
     </div>
 @endsection
 
@@ -44,7 +44,7 @@
                 <label for="input-cliente" class="control-label">Fecha facturacion:</label>
                 <div class="col-md-9">
                     <input type="date" class="form-control" id="fecha-factura" name="fecha-factura"
-                           value="{{ $factura->fecha_facturacion }}" required>
+                           value="{{ date('Y-m-d', strtotime($factura->fecha_facturacion)) }}" required>
                 </div>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -61,7 +61,7 @@
                 </div>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                <label for="input-valor" class="control-label">Archivo adjunto:</label>
+                <label for="input-valor" class="control-label">Archivo adjunto (Max: 10 mb):</label>
                 <div class="col-md-9">
                     <input type="file" name="file" id="file">
                 </div>

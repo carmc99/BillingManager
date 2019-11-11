@@ -5,7 +5,7 @@
         <div class="card shadow">
             <div class="card-header m-0 bg-primary">
                 <div class="row">
-                    <div class="col-sm-9"><h5 class="font-weight-bold text-white">Facturas</h5></div>
+                    <div class="col-sm-9"><h5 class="font-weight-bold text-white">Facturas {{ Auth::user()->empresa->nombre }}</h5></div>
                 </div>
             </div>
             <div class="card-body">
@@ -16,6 +16,7 @@
                         <th scope="col">Estado</th>
                         <th scope="col">Descripcion</th>
                         <th scope="col">Valor total</th>
+                        <th>Fecha facturacion</th>
                         <th>Adjunto</th>
                         <th scope="col">Acciones</th>
                     </tr>
@@ -32,6 +33,7 @@
 
                             <td>{{ $factura->descripcion }}</td>
                             <td>{{ $factura->valor_total }}</td>
+                            <td>{{ date('d/M/Y', strtotime($factura->fecha_facturacion)) }}</td>
                             <td><a href="{{ action('Frontend\FacturaController@getFactura', $factura->id) }}">Descargar</a></td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="">

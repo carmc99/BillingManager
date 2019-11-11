@@ -41,6 +41,6 @@ class User extends Authenticatable
 
     function empresa()
     {
-        return $this->belongsTo('App\Models\Empresa');
+        return $this->belongsTo('App\Models\Empresa', 'empresa_nit', 'nit');
     }
 }

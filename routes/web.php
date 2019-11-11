@@ -24,6 +24,7 @@ Route::group(['middleware' => ['role_or_permission:estandar|ver_facturas']], fun
     Route::resource('facturas', 'Frontend\FacturaController');
     Route::get('down/{filename}', 'Frontend\FacturaController@getFactura');
     Route::resource('recibos', 'Frontend\ReciboController');
+    Route::resource('usuario', 'Frontend\UserController');
 });
 
 Route::group(['middleware' => ['role_or_permission:Administrador']], function () {
@@ -32,7 +33,8 @@ Route::group(['middleware' => ['role_or_permission:Administrador']], function ()
     Route::resource('usuarios', 'Backend\UserController');
     Route::resource('estadisticas', 'Backend\StatsController');
     Route::resource('empresas','Backend\EmpresaController');
-    Route::get('download/{filename}', 'Backend\FacturaController@getFile');
+    Route::get('downloadFactura/{filename}', 'Backend\FacturaController@getFile');
+    Route::get('downloadRecibo/{filename}', 'Backend\ReciboController@getFile');
     Route::resource('adminrecibos', 'Backend\ReciboController');
     #Route::post('adminfacturas/{id}/', 'Backend\ReciboController@store');
 });

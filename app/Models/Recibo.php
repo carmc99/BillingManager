@@ -8,12 +8,12 @@ use Illuminate\Support\Facades\Storage;
 class Recibo extends Model
 {
     function factura(){
-        return $this->belongsTo('App\Models\Factura');
+        return $this->belongsTo('App\Models\Factura','factura_id','num_factura');
     }
 
     function empresa()
     {
-        return $this->belongsTo('App\Models\Empresa');
+        return $this->belongsTo('App\Models\Empresa','empresa_nit','nit');
     }
 
     function empresaGeneradora(){

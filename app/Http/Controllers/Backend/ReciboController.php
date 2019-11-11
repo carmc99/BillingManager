@@ -76,7 +76,8 @@ class ReciboController extends Controller
      */
     public function show($id)
     {
-        return view('backend.recibos.show');
+        $recibo = Recibo::findOrFail($id);
+        return view('backend.recibos.show', compact('recibo'));
     }
 
     /**
@@ -87,9 +88,10 @@ class ReciboController extends Controller
      */
     public function edit($id)
     {
+        $recibo = Recibo::findOrFail($id);
         $empresasGeneradoras = EmpresaGeneradora::query()->orderBy('nombre')->get();
         $empresas = Empresa::query()->orderBy('nombre')->get();
-        return view('backend.recibos.edit', compact('empresasGeneradoras', 'empresas'));
+        return view('backend.recibos.edit', compact('empresasGeneradoras', 'empresas', 'recibo'));
     }
 
     /**
@@ -113,5 +115,15 @@ class ReciboController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getFile($id){
+        $recibo = Recibo::findOrFail($id);
+        $file = storage_path() . '/app/public/' . $recibo->ruta_recibo;
+        if(file_exists($file))
+        {
+            return response()->download($file);
+        }
+        return abort(404);
     }
 }
