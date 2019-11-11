@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Empresa;
+use App\Models\EmpresaGeneradora;
+use App\Models\Factura;
+use App\Models\Recibo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +18,8 @@ class ReciboController extends Controller
      */
     public function index()
     {
-        return view('backend.recibos.index');
+        $recibos = Recibo::all();
+        return view('backend.recibos.index', compact('recibos'));
     }
 
     /**
@@ -24,7 +29,8 @@ class ReciboController extends Controller
      */
     public function create()
     {
-        //
+        //sin uso
+        return view('backend.recibos.register');
     }
 
     /**
@@ -35,7 +41,31 @@ class ReciboController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'num-recibo' => 'min:3|max:30|required|unique:recibos,num_recibo',
+            'cliente' => 'required|min:3|max:30',
+            'factura_id' => 'required',
+            'generador' => 'required|min:3|max:30',
+            'descripcion' => 'max:300',
+            'fecha-recibo' => 'required|date',
+            'file' => 'required|max:10000|mimes:doc,docx,pdf'
+        ]);
+        $factura = Factura::query()->where('num_factura', '=',$request->input('factura_id'))->first();
+        $recibo = new Recibo();
+        $recibo->num_recibo = (int) $request->input('num-recibo');
+        $recibo->factura_id = (int) $request->input('factura_id');
+        $recibo->empresa_nit = $request->input('cliente');
+        $recibo->empresa_generadora_nit = $request->input('generador');
+        $recibo->descripcion = $request->input('descripcion');
+        $recibo->fecha_recibo = $request->input('fecha-recibo');
+        $recibo->ruta_recibo = $recibo->guardarRecibo($request->file('file'), $request->input('cliente'));
+        $factura->estado = true;
+        $factura->update();
+        $recibo->save();
+
+
+
+        return redirect()->back()->with('message', 'Registro ingresado exitosamente');
     }
 
     /**
@@ -46,7 +76,7 @@ class ReciboController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('backend.recibos.show');
     }
 
     /**
@@ -57,7 +87,9 @@ class ReciboController extends Controller
      */
     public function edit($id)
     {
-        //
+        $empresasGeneradoras = EmpresaGeneradora::query()->orderBy('nombre')->get();
+        $empresas = Empresa::query()->orderBy('nombre')->get();
+        return view('backend.recibos.edit', compact('empresasGeneradoras', 'empresas'));
     }
 
     /**

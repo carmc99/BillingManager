@@ -8,11 +8,15 @@ use Illuminate\Support\Facades\Storage;
 class Factura extends Model
 {
     function empresa(){
-        $this->belongsTo('App\Models\Empresa');
+        return $this->belongsTo('App\Models\Empresa','empresa_nit', 'nit');
     }
 
     function recibo(){
-        $this->hasOne('App\Models\Recibo');
+        return $this->hasOne('App\Models\Recibo');
+    }
+
+    function empresaGeneradora(){
+        return $this->belongsTo('App\Models\EmpresaGeneradora','empresa_generadora_nit', 'nit');
     }
 
     function guardarArchivo($file, $cliente)

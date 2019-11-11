@@ -32,6 +32,10 @@
                     <a href="{{ action('Backend\FacturaController@index') }}" class="nav-link text-dark bg-light">
                         Facturas</a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ action('Backend\ReciboController@index') }}" class="nav-link text-dark bg-light">
+                        Recibos</a>
+                </li>
 
             </ul>
 

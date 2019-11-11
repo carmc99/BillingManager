@@ -41,6 +41,6 @@ class User extends Authenticatable
 
     function empresa()
     {
-        $this->belongsTo('App\Models\Empresa');
+        return $this->belongsTo('App\Models\Empresa');
     }
 }

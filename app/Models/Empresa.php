@@ -13,14 +13,14 @@ class Empresa extends Model
 
     function users()
     {
-        $this->hasMany('App\Models\User');
+        return $this->hasMany('App\Models\User');
     }
 
     function facturas(){
-        $this->hasMany('App\Models\Factura');
+        return $this->hasMany('App\Models\Factura');
     }
 
     function recibos(){
-        $this->hasMany('App\Models\Recibo');
+        return $this->hasMany('App\Models\Recibo');
     }
 }

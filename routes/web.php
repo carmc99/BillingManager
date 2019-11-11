@@ -34,4 +34,5 @@ Route::group(['middleware' => ['role_or_permission:Administrador']], function ()
     Route::resource('empresas','Backend\EmpresaController');
     Route::get('download/{filename}', 'Backend\FacturaController@getFile');
     Route::resource('adminrecibos', 'Backend\ReciboController');
+    #Route::post('adminfacturas/{id}/', 'Backend\ReciboController@store');
 });

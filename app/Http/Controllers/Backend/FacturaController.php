@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Empresa;
+use App\Models\EmpresaGeneradora;
 use App\Models\Factura;
 use App\Models\User;
 use Faker\Generator;
@@ -36,8 +38,9 @@ class FacturaController extends Controller
      */
     public function create()
     {
-        $empresas = DB::table('empresas')->orderBy('nombre')->get();
-        return view('backend.facturas.register', compact('empresas'));
+        $empresasGeneradoras = EmpresaGeneradora::query()->orderBy('nombre')->get();
+        $empresas = Empresa::query()->orderBy('nombre')->get();
+        return view('backend.facturas.register', compact('empresas', 'empresasGeneradoras'));
     }
 
     /**
@@ -48,11 +51,10 @@ class FacturaController extends Controller
      */
     public function store(Request $request)
     {
-
         $this->validate($request, [
             'num-factura' => 'min:3|max:30|required|unique:facturas,num_factura',
             'cliente' => 'required|min:3|max:30',
-            'generador' => 'required|min:3|max:60',
+            'generador' => 'required|min:3|max:30',
             'descripcion' => 'max:300',
             'fecha-factura' => 'required|date',
             'file' => 'required|max:10000|mimes:doc,docx,pdf'
@@ -63,7 +65,7 @@ class FacturaController extends Controller
         $factura->empresa_nit = $request->input('cliente');
         $factura->descripcion = $request->input('descripcion');
         $factura->valor_total = $request->input('valor');
-        $factura->empresa = $request->input('generador');
+        $factura->empresa_generadora_nit = $request->input('generador');
         $factura->fecha_facturacion = $request->input('fecha-factura');
         $factura->ruta_factura = $factura->guardarArchivo($request->file('file'), $request->input('cliente'));
         $factura->estado = false;
@@ -93,9 +95,10 @@ class FacturaController extends Controller
      */
     public function edit($id)
     {
-        $empresas = DB::table('empresas')->orderBy('nombre')->get();
+        $empresasGeneradoras = EmpresaGeneradora::query()->orderBy('nombre')->get();
+        $empresas = Empresa::query()->orderBy('nombre')->get();
         $factura = Factura::findOrFail($id);
-        return view('backend.facturas.edit', compact('factura', 'empresas'));
+        return view('backend.facturas.edit', compact('factura', 'empresas', 'empresasGeneradoras'));
     }
 
     /**
