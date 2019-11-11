@@ -109,7 +109,7 @@ class UserController extends Controller
             'identificacion' => Rule::unique('users')->ignore($id),
             'nombre' => 'min:3|max:80|required',
             'empresa' => 'required|min:3|max:30',
-            'rol' => 'required',
+            'rol' => 'sometimes',
             'contraseña' => 'sometimes',
             'confirmar_contraseña' => 'sometimes'
         ]);
@@ -118,6 +118,16 @@ class UserController extends Controller
         $usuario->identificacion = $request->input('identificacion');
         $usuario->email = $request->input('email');
         $usuario->empresa_nit = $request->input('empresa');
+        var_dump($request->all());
+        if ($request->input('rol') == 'Administrador' || $request->input('rol') == 'Estandar' )
+        {
+            $usuario->removeRole($usuario->getRoleNames()->first());
+            $usuario->assignRole($request->input('rol'));
+        }
+        if( $request->input('contraseña') && $request->input('confirmar_contraseña'))
+        {
+            $usuario->password = Hash::make($request->input('contraseña'));
+        }
         $usuario->update();
 
         return redirect()->back()->with('message', 'Registro: ' . $usuario->name . ' actualizado exitosamente');

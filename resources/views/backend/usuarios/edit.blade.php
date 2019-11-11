@@ -33,6 +33,7 @@
                     <label for="input-rol" class="control-label font-weight-bold">Rol:</label>
                     <div class="col-md-9">
                         <select name="rol" id="rol" class="form-control" required>
+                            <option value="null">Seleccionar una opcion</option>
                             <option value="Estandar">Estandar</option>
                             <option value="Administrador">Administrador</option>
                         </select>
