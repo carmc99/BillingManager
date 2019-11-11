@@ -42,7 +42,7 @@ class ReciboController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'num-recibo' => 'min:3|max:30|required|unique:recibos,num_recibo',
+            'num-recibo' => 'numeric|min:3|required',
             'cliente' => 'required|min:3|max:30',
             'factura_id' => 'required',
             'generador' => 'required|min:3|max:30',
@@ -114,7 +114,15 @@ class ReciboController extends Controller
      */
     public function destroy($id)
     {
-        Recibo::findOrfail($id)->delete();
+        $recibo = Recibo::findOrfail($id);
+        $facturas = Factura::query()->where('num_factura','=', $recibo->factura->num_factura)->get();
+        foreach ($facturas as $factura)
+        {
+            $factura->estado = false;
+            $factura->update();
+        }
+        $recibo->delete();
+
         return redirect()->back();
     }
 

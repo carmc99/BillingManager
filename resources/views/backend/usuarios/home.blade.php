@@ -24,6 +24,7 @@
                 <th scope="col">Nombre</th>
                 <th>Rol</th>
                 <th scope="col">Email</th>
+                <th>Empresa</th>
                 <th>Fecha creación</th>
                 <th scope="col">Acciones</th>
             </tr>
@@ -35,6 +36,7 @@
                     <td>{{ $usuario->name }}</td>
                     <td>{{ $usuario->getRoleNames()->first() }}</td>
                     <td>{{ $usuario->email }}</td>
+                    <td>{{ $usuario->empresa->nombre }}</td>
                     <td>{{ date('d/M/Y', strtotime($usuario->created_at)) }}</td>
                     <td>
                         <div class="btn-group" role="group" aria-label="">
