@@ -12,6 +12,7 @@
         <table class="table table-responsive-lg" id="tabla-facturas">
             <thead>
             <tr class="text-center">
+                <th scope="col">Num recibo</th>
                 <th scope="col">Num factura</th>
                 <th>Empresa</th>
                 <th scope="col">Descripcion</th>
@@ -23,6 +24,7 @@
             <tbody>
             @foreach($recibos as $recibo)
                 <tr class="text-center">
+                    <th scope="row">{{ $recibo->num_recibo }}</th>
                     <th scope="row">{{ $recibo->factura->num_factura }}</th>
                     <td>{{ $recibo->empresa->nombre }}</td>
                     <td>{{ $recibo->descripcion }}</td>
