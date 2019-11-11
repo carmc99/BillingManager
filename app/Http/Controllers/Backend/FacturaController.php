@@ -123,8 +123,13 @@ class FacturaController extends Controller
      */
     public function destroy($id)
     {
-        Factura::findOrfail($id)->delete();
-        return redirect()->back();
+        $factura = Factura::findOrfail($id);
+        if($factura->recibo)
+        {
+            return redirect()->back()->with('error', 'El registro que intenta eliminar posee un recibo asociado: ' . $factura->recibo->num_recibo);
+        }
+        $factura->delete();
+        return redirect()->back()->with('message', 'Registro eliminado exitosamente');
     }
 
     public function getFile($id){

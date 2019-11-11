@@ -12,3 +12,10 @@
         </div>
     </div>
 @endif
+@if(session('error'))
+    <div class="form-group">
+        <div class="alert alert-danger">
+            <span>{{ session('error') }}</span>
+        </div>
+    </div>
+@endif

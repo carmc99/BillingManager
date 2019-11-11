@@ -26,7 +26,9 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    @role('Estandar')
                     <a href="{{ action('Frontend\UserController@show', Auth::user()->id) }}" class="dropdown-item">Perfil</a>
+                    @endrole
                     @role('Administrador')
                     <a href="{{ action('Backend\UserController@show', Auth::user()->id) }}" class="dropdown-item">Perfil</a>
                     <a href="{{ action('Backend\DashboardController@index') }}" class="dropdown-item">Dashboard</a>

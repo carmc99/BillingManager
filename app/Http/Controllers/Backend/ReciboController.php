@@ -114,7 +114,8 @@ class ReciboController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Recibo::findOrfail($id)->delete();
+        return redirect()->back();
     }
 
     public function getFile($id){
