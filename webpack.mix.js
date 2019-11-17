@@ -22,4 +22,5 @@ mix.styles([
     'resources/vendor/css/login.css',
     'resources/vendor/bootstrap/css/bootstrap.min.css',
     'resources/sass/app.scss',
+    'resources/vendor/fontAwesome/all.css'
 ], 'public/css/app.css');

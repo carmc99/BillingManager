@@ -40,7 +40,7 @@
                                     @can('ver_facturas')
                                         <a href="{{ action('Frontend\FacturaController@show', $factura->id) }}"
                                            name="confirm_item" class="btn btn-primary"
-                                           data-toggle="tooltip" data-placement="top" title="ver"><b>Ver</b>
+                                           data-toggle="tooltip" data-placement="top" title="ver"><span class="fas fa-eye" aria-hidden="true"></span>
                                         </a>
                                     @endcan
                                 </div>

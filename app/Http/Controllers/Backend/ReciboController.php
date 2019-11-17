@@ -44,6 +44,7 @@ class ReciboController extends Controller
             'num-recibo' => 'numeric|min:3|required',
             'cliente' => 'required|min:3|max:30',
             'factura_id' => 'required',
+            'valor-abono' => 'required',
             'generador' => 'required|min:3|max:30',
             'descripcion' => 'max:300',
             'fecha-recibo' => 'required|date',
@@ -51,18 +52,30 @@ class ReciboController extends Controller
         ]);
         $factura = Factura::query()->where('num_factura', '=',$request->input('factura_id'))->first();
         $recibo = new Recibo();
-        $recibo->num_recibo = (int) $request->input('num-recibo');
-        $recibo->factura_id = (int) $request->input('factura_id');
+        $recibo->num_recibo = $request->input('num-recibo');
+        $recibo->factura_id = $request->input('factura_id');
         $recibo->empresa_nit = $request->input('cliente');
+        $recibo->valor_abono = (int) $request->input('valor-abono');
         $recibo->empresa_generadora_nit = $request->input('generador');
         $recibo->descripcion = $request->input('descripcion');
         $recibo->fecha_recibo = $request->input('fecha-recibo');
         $recibo->ruta_recibo = $recibo->guardarRecibo($request->file('file'), $request->input('cliente'));
-        $factura->estado = true;
-        $factura->update();
+
+
+        if($recibo->valor_abono == $factura->valor_total){
+            $factura->estado = true;
+            $factura->valor_adeudado = 0;
+            $factura->update();
+        }
+        if($recibo->valor_abono < $factura->valor_total){
+            $deuda = $factura->valor_total - $recibo->valor_abono;
+            $factura->valor_adeudado = $deuda;
+            $factura->update();
+        }
+        if($recibo->valor_abono > $factura->valor_total) {
+            return redirect()->back()->with('error', 'El valor del recibo supera el valor de la factura');
+        }
         $recibo->save();
-
-
 
         return redirect()->back()->with('message', 'Registro ingresado exitosamente');
     }

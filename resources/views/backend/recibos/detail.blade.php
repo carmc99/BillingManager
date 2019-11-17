@@ -3,7 +3,6 @@
         <thead>
         <tr class="text-center">
             <th scope="col">Num recibo</th>
-            <th scope="col">Num factura</th>
             <th>Empresa</th>
             <th scope="col">Descripcion</th>
             <th>Fecha creación</th>
@@ -15,7 +14,6 @@
         @foreach($recibos as $recibo)
             <tr class="text-center">
                 <th scope="row">{{ $recibo->num_recibo }}</th>
-                <th scope="row">{{ $recibo->factura->num_factura }}</th>
                 <td>{{ $recibo->empresa->nombre }}</td>
                 <td>{{ $recibo->descripcion }}</td>
                 <td>{{ date('d/M/Y', strtotime($recibo->created_at)) }}</td>
@@ -25,13 +23,15 @@
                         @can('ver_recibos')
                             <a href="{{ action('Backend\ReciboController@show', $recibo->id) }}"
                                name="confirm_item" class="btn btn-primary"
-                               data-toggle="tooltip" data-placement="top" title="ver"><b>Ver</b>
+                               data-toggle="tooltip" data-placement="top" title="ver">
+                                <span class="fas fa-eye" aria-hidden="true"></span>
                             </a>
                         @endcan
                         @can('editar_recibos')
                             <a href="{{ action('Backend\ReciboController@edit', $recibo->id) }}"
                                name="confirm_item" class="btn btn-warning"
-                               data-toggle="tooltip" data-placement="top" title=""><b>Editar</b>
+                               data-toggle="tooltip" data-placement="top" title="">
+                                <span class="fas fa-edit" aria-hidden="true"></span>
                             </a>
                         @endcan
                         @can('eliminar_recibos')
@@ -39,7 +39,7 @@
                                   method="POST">
                                 {{method_field('DELETE')}}
                                 @csrf
-                                <button type="submit" class="btn btn-danger"><b>Eliminar</b></button>
+                                <button type="submit" class="btn btn-danger"> <span class="fas fa-trash" aria-hidden="true"></span></button>
                             </form>
                         @endcan
                     </div>

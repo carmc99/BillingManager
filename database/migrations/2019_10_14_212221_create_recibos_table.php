@@ -35,7 +35,7 @@ class CreateRecibosTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
 
-            $table->decimal('valor_abono');
+            $table->unsignedInteger('valor_abono');
             $table->string('ruta_recibo');
             $table->dateTime('fecha_recibo');
             $table->string('descripcion');

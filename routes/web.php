@@ -11,14 +11,9 @@
 |
 */
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['role_or_permission:estandar|ver_facturas']], function () {
     Route::resource('facturas', 'Frontend\FacturaController');

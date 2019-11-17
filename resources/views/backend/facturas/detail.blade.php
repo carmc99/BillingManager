@@ -30,6 +30,10 @@
         <span class="text-black-50">{{ date('d/M/Y', strtotime($factura->created_at))  }}</span>
     </li>
     <li class="list-group-item d-flex justify-content-between align-items-center text-primary font-weight-bold">Valor
+        adeudado:
+        <span class="text-black-50">$ {{ number_format($factura->valor_adeudado) }}</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center text-primary font-weight-bold">Valor
         total:
         <span class="text-black-50">$ {{ number_format($factura->valor_total) }}</span>
     </li>
