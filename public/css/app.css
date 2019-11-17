@@ -8,10 +8,15 @@
     min-height: 85vh;
 }
 
+.transparent{
+    background-color: rgba(0,0,0,0.10);
+}
+
 .bg-image {
-    background-image: url('http://digitalimagemakerworld.com/images/business-wallpaper/36365549-business-wallpaper.jpg');
+    background-image: url('../images/background-image.jpeg');
     background-size: cover;
     background-position: center;
+    background-color: transparent;
 }
 
 .login-heading {
