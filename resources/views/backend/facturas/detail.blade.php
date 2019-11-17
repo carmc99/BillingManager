@@ -31,6 +31,9 @@
     </li>
     <li class="list-group-item d-flex justify-content-between align-items-center text-primary font-weight-bold">Valor
         total:
-        <span class="text-black-50">$ {{ $factura->valor_total }}</span>
+        <span class="text-black-50">$ {{ number_format($factura->valor_total) }}</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center text-primary font-weight-bold">Adjunto:
+        <span class="text-black-50"><a href="{{ action('Backend\FacturaController@getFile', $factura->id) }}">Descargar</a></span>
     </li>
 </ul>

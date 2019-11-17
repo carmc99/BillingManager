@@ -57,7 +57,7 @@
                 <label for="input-valor" class="control-label">Valor total ($):</label>
                 <div class="col-md-9">
                     <input type="text" class="form-control" id="valor" name="valor"
-                           value="{{ $factura->valor_total   }}">
+                           value="{{ number_format($factura->valor_total)   }}">
                 </div>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">

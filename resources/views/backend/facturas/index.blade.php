@@ -42,7 +42,7 @@
                     @endif
 
                     <td>{{ $factura->descripcion }}</td>
-                    <td>{{ $factura->valor_total }}</td>
+                    <td>${{ number_format($factura->valor_total) }}</td>
                     <td>{{ date('d/M/Y', strtotime($factura->created_at)) }}</td>
                     <td><a href="{{ action('Backend\FacturaController@getFile', $factura->id) }}">Descargar</a></td>
                     <td>

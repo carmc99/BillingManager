@@ -29,7 +29,6 @@ class ReciboController extends Controller
      */
     public function create()
     {
-        //sin uso
         return view('backend.recibos.register');
     }
 
@@ -121,8 +120,8 @@ class ReciboController extends Controller
             $factura->estado = false;
             $factura->update();
         }
+        $recibo->eliminarRecibo($recibo->ruta_recibo);
         $recibo->delete();
-
         return redirect()->back();
     }
 

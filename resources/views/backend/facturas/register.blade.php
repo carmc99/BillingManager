@@ -14,7 +14,7 @@
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <label for="input-num-factura" class="control-label">Número factura:</label>
                 <div class="col-md-9">
-                    <input type="number" class="form-control" id="num-factura" name="num-factura" required>
+                    <input type="text" class="form-control" id="num-factura" name="num-factura" required>
                 </div>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -52,7 +52,7 @@
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <label for="input-valor" class="control-label">Valor total ($):</label>
                 <div class="col-md-9">
-                    <input type="number" class="form-control" id="valor" name="valor" required>
+                    <input type="number" step="0.01" class="form-control" id="valor" name="valor" required>
                 </div>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">

@@ -15,7 +15,7 @@ class CreateRecibosTable extends Migration
     {
         Schema::create('recibos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('num_recibo')->nullable(false);
+            $table->unsignedInteger('num_recibo')->nullable();
 
             $table->string('empresa_nit', 30)->nullable(false);;
             $table->foreign('empresa_nit')
@@ -35,6 +35,7 @@ class CreateRecibosTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
 
+            $table->decimal('valor_abono');
             $table->string('ruta_recibo');
             $table->dateTime('fecha_recibo');
             $table->string('descripcion');

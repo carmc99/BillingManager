@@ -110,8 +110,8 @@ class UserController extends Controller
             'nombre' => 'min:3|max:80|required',
             'empresa' => 'required|min:3|max:30',
             'rol' => 'sometimes',
-            'contraseña' => 'sometimes',
-            'confirmar_contraseña' => 'sometimes'
+            'contraseña' => 'min:6|sometimes',
+            'confirmar_contraseña' => 'min:6|sometimes'
         ]);
         $usuario = User::findOrFail($id);
         $usuario->name = $request->input('nombre');

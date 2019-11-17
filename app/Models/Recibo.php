@@ -7,16 +7,18 @@ use Illuminate\Support\Facades\Storage;
 
 class Recibo extends Model
 {
-    function factura(){
-        return $this->belongsTo('App\Models\Factura','factura_id','num_factura');
+    function factura()
+    {
+        return $this->belongsTo('App\Models\Factura', 'factura_id', 'num_factura');
     }
 
     function empresa()
     {
-        return $this->belongsTo('App\Models\Empresa','empresa_nit','nit');
+        return $this->belongsTo('App\Models\Empresa', 'empresa_nit', 'nit');
     }
 
-    function empresaGeneradora(){
+    function empresaGeneradora()
+    {
         return $this->belongsTo('App\Models\EmpresaGeneradora');
     }
 
@@ -24,8 +26,16 @@ class Recibo extends Model
     {
         $rutaFolderCliente = storage_path($cliente);
         if (!file_exists($rutaFolderCliente)) {
-            $ruta = Storage::disk('public')->put($cliente,  $file);
+            $ruta = Storage::disk('public')->put($cliente, $file);
         }
         return $ruta;
+    }
+
+    function eliminarRecibo($file)
+    {
+        $file = storage_path() . '/app/public/' . $file;
+        if(is_file($file)){
+            unlink($file);
+        }
     }
 }

@@ -67,7 +67,7 @@ class FacturaController extends Controller
         $factura->valor_total = $request->input('valor');
         $factura->empresa_generadora_nit = $request->input('generador');
         $factura->fecha_facturacion = $request->input('fecha-factura');
-        $factura->ruta_factura = $factura->guardarArchivo($request->file('file'), $request->input('cliente'));
+        $factura->ruta_factura = $factura->guardarFactura($request->file('file'), $request->input('cliente'));
         $factura->estado = false;
         $factura->saveOrFail();
 
@@ -84,7 +84,9 @@ class FacturaController extends Controller
     public function show($id)
     {
         $factura = Factura::findOrFail($id);
-        return view('backend.facturas.show', compact('factura'));
+        $recibos = $factura->recibos()->get();
+        $test = $factura->recibos()->first();
+        return view('backend.facturas.show', compact('factura', 'recibos'));
     }
 
     /**
@@ -128,6 +130,7 @@ class FacturaController extends Controller
         {
             return redirect()->back()->with('error', 'El registro que intenta eliminar posee un recibo asociado: ' . $factura->recibo->num_recibo);
         }
+        $factura->eliminarFactura($factura->ruta_factura);
         $factura->delete();
         return redirect()->back()->with('message', 'Registro eliminado exitosamente');
     }

@@ -11,20 +11,28 @@ class Factura extends Model
         return $this->belongsTo('App\Models\Empresa','empresa_nit', 'nit');
     }
 
-    function recibo(){
-        return $this->hasOne('App\Models\Recibo','factura_id','num_factura');
+    function recibos(){
+        return $this->hasMany('App\Models\Recibo','factura_id','num_factura');
     }
 
     function empresaGeneradora(){
         return $this->belongsTo('App\Models\EmpresaGeneradora','empresa_generadora_nit', 'nit');
     }
 
-    function guardarArchivo($file, $cliente)
+    function guardarFactura($file, $cliente)
     {
         $rutaFolderCliente = storage_path($cliente);
         if (!file_exists($rutaFolderCliente)) {
             $ruta = Storage::disk('public')->put($cliente,  $file);
         }
         return $ruta;
+    }
+
+    function eliminarFactura($file)
+    {
+        $file = storage_path() . '/app/public/' . $file;
+        if(is_file($file)){
+            unlink($file);
+        }
     }
 }
