@@ -68,8 +68,10 @@ class ReciboController extends Controller
             $factura->update();
         }
         if($recibo->valor_abono < $factura->valor_total){
-            $deuda = $factura->valor_total - $recibo->valor_abono;
-            $factura->valor_adeudado = $deuda;
+            $factura->valor_adeudado -= $recibo->valor_abono;
+            if($factura->valor_adeudado <= 0){
+                $factura->estado = true;
+            }
             $factura->update();
         }
         if($recibo->valor_abono > $factura->valor_total) {

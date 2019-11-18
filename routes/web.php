@@ -17,7 +17,8 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['role_or_permission:estandar|ver_facturas']], function () {
     Route::resource('facturas', 'Frontend\FacturaController');
-    Route::get('down/{filename}', 'Frontend\FacturaController@getFactura');
+    Route::get('download/{filename}', 'Frontend\FacturaController@getFactura');
+    Route::get('downloadR/{filename}', 'Frontend\ReciboController@getFile');
     Route::resource('recibos', 'Frontend\ReciboController');
     Route::resource('usuario', 'Frontend\UserController');
 });

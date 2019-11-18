@@ -28,7 +28,7 @@
         <li class="list-group-item d-flex justify-content-between align-items-center">
             <label for="input-valor" class="control-label">Valor abono ($):</label>
             <div class="col-md-9">
-                <input type="number" class="form-control" id="valor-abono" name="valor-abono" required>
+                <input type="number" step="any" class="form-control" id="valor-abono" name="valor-abono" required>
             </div>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">

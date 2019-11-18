@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\Factura;
+use App\Models\Recibo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -32,7 +33,9 @@ class FacturaController extends Controller
     public function show($id)
     {
         $factura = Factura::findOrFail($id);
-        return view('frontend.facturas.show', compact('factura'));
+        $recibos = Recibo::query()->where('factura_id', '=', $factura->num_factura)
+            ->where('empresa_nit', '=', $factura->empresa_nit)->get();
+        return view('frontend.facturas.show', compact('factura','recibos'));
     }
 
     public function getFactura($id){

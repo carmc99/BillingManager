@@ -64,7 +64,7 @@ class FacturaController extends Controller
         $factura->num_factura = $request->input('num-factura');
         $factura->empresa_nit = $request->input('cliente');
         $factura->descripcion = $request->input('descripcion');
-        $factura->valor_total = $request->input('valor');
+        $factura->valor_total = (double) $request->input('valor');
         $factura->valor_adeudado = $request->input('valor');
         $factura->empresa_generadora_nit = $request->input('generador');
         $factura->fecha_facturacion = $request->input('fecha-factura');

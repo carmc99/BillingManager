@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Recibo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ReciboController extends Controller
 {
@@ -12,9 +15,18 @@ class ReciboController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('check_role_redirect');
+    }
+
     public function index()
     {
-        return view('frontend.recibos.index');
+        $empresa = Auth::user()->empresa_nit;
+        $recibos = Recibo::query()->where('empresa_nit', '=', $empresa)->get();
+        return view('frontend.recibos.index', compact('recibos'));
     }
 
     /**
@@ -49,37 +61,13 @@ class ReciboController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    public function getFile($id){
+        $recibo = Recibo::findOrFail($id);
+        $file = storage_path() . '/app/public/' . $recibo->ruta_recibo;
+        if(file_exists($file))
+        {
+            return response()->download($file);
+        }
+        return abort(404);
     }
 }

@@ -28,8 +28,8 @@ class CreateFacturasTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
             $table->text('descripcion')->nullable();
-            $table->string('valor_total');
-            $table->unsignedInteger('valor_adeudado')->default(0);
+            $table->unsignedInteger('valor_total');
+            $table->bigInteger('valor_adeudado')->default(0);
             $table->boolean('estado');
             $table->dateTime('fecha_facturacion');
             $table->timestamps();
