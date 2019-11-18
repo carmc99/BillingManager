@@ -16,7 +16,7 @@ class CreateEmpresasGeneradorasTable extends Migration
         Schema::create('empresas_generadoras', function (Blueprint $table) {
             $table->string('nit', 30)->primary();
             $table->string('nombre');
-            $table->string('descripcion')->default('');
+            $table->string('descripcion')->default('')->nullable();
             $table->timestamps();
             $table->engine = 'InnoDB';
         });

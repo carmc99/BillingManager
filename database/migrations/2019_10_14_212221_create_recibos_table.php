@@ -38,7 +38,7 @@ class CreateRecibosTable extends Migration
             $table->unsignedInteger('valor_abono');
             $table->string('ruta_recibo');
             $table->dateTime('fecha_recibo');
-            $table->string('descripcion');
+            $table->string('descripcion')->nullable();
             $table->timestamps();
             $table->engine = 'InnoDB';
         });

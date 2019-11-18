@@ -16,10 +16,10 @@ class CreateEmpresasTable extends Migration
         Schema::create('empresas', function (Blueprint $table) {
             $table->string('nit', 30)->primary();
             $table->string('nombre', 200);
-            $table->string('direccion', 255)->default('');
-            $table->string('telefono', 50)->default('');
-            $table->string('correo', 200)->default('');
-            $table->string('ruta_logo')->default('');
+            $table->string('direccion', 255)->default('')->nullable();
+            $table->string('telefono', 50)->default('')->nullable();
+            $table->string('correo', 200)->default('')->nullable();
+            $table->string('ruta_logo')->default('')->nullable();
             $table->timestamps();
             $table->engine = 'InnoDB';
         });
