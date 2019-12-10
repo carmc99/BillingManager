@@ -15,27 +15,19 @@ class FacturaTableSeeder extends Seeder
     public function run()
     {
         $factura = new Factura();
-        $factura->user_id = 1;
-        $factura->num_pago = '2342523';
+        #$factura->user_id = 1;
+        $factura->empresa_nit = '123456';
+        $factura->num_factura = '2342523';
         $factura->ruta_factura = 'test';
+        $factura->empresa_generadora_nit = '1234567';
         $factura->descripcion = "Lorem";
-        $factura->valor_total = '3.435.434';
-        $factura->estado = 'Pagado';
+        $factura->valor_total = 3486435;
+        $factura->valor_adeudado = 1234;
+        $factura->estado_id = 1;
         $factura->fecha_facturacion = Carbon::now();
         $factura->created_at = Carbon::now();
         $factura->updated_at = Carbon::now();
         $factura->save();
 
-        $factura = new Factura();
-        $factura->user_id = 2;
-        $factura->num_pago = '345346';
-        $factura->ruta_factura = 'test 2';
-        $factura->descripcion = "Lorem";
-        $factura->valor_total = '3.435.434';
-        $factura->estado = 'Pendiente';
-        $factura->fecha_facturacion = Carbon::now();
-        $factura->created_at = Carbon::now();
-        $factura->updated_at = Carbon::now();
-        $factura->save();
     }
 }

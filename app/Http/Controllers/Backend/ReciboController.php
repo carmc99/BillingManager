@@ -35,7 +35,7 @@ class ReciboController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -50,31 +50,24 @@ class ReciboController extends Controller
             'fecha-recibo' => 'required|date',
             'file' => 'required|max:10000|mimes:doc,docx,pdf'
         ]);
-        $factura = Factura::query()->where('num_factura', '=',$request->input('factura_id'))->first();
+        $factura = Factura::query()->where('num_factura', '=', $request->input('factura_id'))->first();
         $recibo = new Recibo();
         $recibo->num_recibo = $request->input('num-recibo');
         $recibo->factura_id = $request->input('factura_id');
         $recibo->empresa_nit = $request->input('cliente');
-        $recibo->valor_abono = (int) $request->input('valor-abono');
+        $recibo->valor_abono = (int)$request->input('valor-abono');
         $recibo->empresa_generadora_nit = $request->input('generador');
         $recibo->descripcion = $request->input('descripcion');
         $recibo->fecha_recibo = $request->input('fecha-recibo');
         $recibo->ruta_recibo = $recibo->guardarRecibo($request->file('file'), $request->input('cliente'));
 
-
-        if($recibo->valor_abono == $factura->valor_total){
-            $factura->estado = true;
-            $factura->valor_adeudado = 0;
-            $factura->update();
+        if ($recibo->valor_abono == $factura->valor_total) {
+            $factura->definirEstado($factura->num_factura, 0);
         }
-        if($recibo->valor_abono < $factura->valor_total){
-            $factura->valor_adeudado -= $recibo->valor_abono;
-            if($factura->valor_adeudado <= 0){
-                $factura->estado = true;
-            }
-            $factura->update();
+        if ($recibo->valor_abono < $factura->valor_total) {
+            $factura->definirEstado($factura->num_factura, ($factura->valor_adeudado -= $recibo->valor_abono));
         }
-        if($recibo->valor_abono > $factura->valor_total) {
+        if ($recibo->valor_abono > $factura->valor_total) {
             return redirect()->back()->with('error', 'El valor del recibo supera el valor de la factura');
         }
         $recibo->save();
@@ -85,7 +78,7 @@ class ReciboController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -97,7 +90,7 @@ class ReciboController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -111,8 +104,8 @@ class ReciboController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -123,16 +116,17 @@ class ReciboController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         $recibo = Recibo::findOrfail($id);
-        $facturas = Factura::query()->where('num_factura','=', $recibo->factura->num_factura)->get();
-        foreach ($facturas as $factura)
-        {
-            $factura->estado = false;
+        $facturas = Factura::query()->where('num_factura', '=', $recibo->factura->num_factura)->get();
+
+        foreach ($facturas as $factura) {
+            $factura->estado_id = 3; // Establece el estado de las facturas a pendiente de pago
+            $factura->valor_adeudado = $factura->valor_total;
             $factura->update();
         }
         $recibo->eliminarRecibo($recibo->ruta_recibo);
@@ -140,11 +134,11 @@ class ReciboController extends Controller
         return redirect()->back();
     }
 
-    public function getFile($id){
+    public function getFile($id)
+    {
         $recibo = Recibo::findOrFail($id);
         $file = storage_path() . '/app/public/' . $recibo->ruta_recibo;
-        if(file_exists($file))
-        {
+        if (file_exists($file)) {
             return response()->download($file);
         }
         return abort(404);

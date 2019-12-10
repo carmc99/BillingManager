@@ -19,3 +19,14 @@
         </div>
     </div>
 @endif
+
+@if(session('recibosAsociadosAlert'))
+    <div class="form-group">
+        @foreach(session('recibosAsociadosAlert')->all() as $data)
+            <div class="alert alert-danger">
+                <span>El registro que intenta eliminar posee un recibo asociado, número: {{ $data->num_recibo }}</span>
+            </div>
+        @endforeach
+    </div>
+@endif
+

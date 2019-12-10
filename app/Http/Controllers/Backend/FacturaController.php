@@ -10,6 +10,7 @@ use Faker\Generator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use function MongoDB\BSON\toJSON;
 use Yoeunes\Toastr\Toastr;
 use Illuminate\Support\Facades\Storage;
 
@@ -69,7 +70,7 @@ class FacturaController extends Controller
         $factura->empresa_generadora_nit = $request->input('generador');
         $factura->fecha_facturacion = $request->input('fecha-factura');
         $factura->ruta_factura = $factura->guardarFactura($request->file('file'), $request->input('cliente'));
-        $factura->estado = false;
+        $factura->estado_id = 3; //Pendiente
         $factura->saveOrFail();
 
 
@@ -127,10 +128,11 @@ class FacturaController extends Controller
     public function destroy($id)
     {
         $factura = Factura::findOrfail($id);
-        if($factura->recibo)
+        if(count($factura->recibos) != 0)
         {
-            return redirect()->back()->with('error', 'El registro que intenta eliminar posee un recibo asociado: ' . $factura->recibo->num_recibo);
+            return redirect()->back()->with('recibosAsociadosAlert', $factura->recibos);
         }
+
         $factura->eliminarFactura($factura->ruta_factura);
         $factura->delete();
         return redirect()->back()->with('message', 'Registro eliminado exitosamente');

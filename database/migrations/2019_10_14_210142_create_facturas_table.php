@@ -30,7 +30,12 @@ class CreateFacturasTable extends Migration
             $table->text('descripcion')->nullable();
             $table->unsignedInteger('valor_total');
             $table->bigInteger('valor_adeudado')->default(0);
-            $table->boolean('estado');
+            $table->unsignedInteger('estado_id');
+            $table->foreign('estado_id')->references('codigo')
+                ->on('estados_factura')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
+            //$table->boolean('estado');
             $table->dateTime('fecha_facturacion');
             $table->timestamps();
             $table->engine = 'InnoDB';

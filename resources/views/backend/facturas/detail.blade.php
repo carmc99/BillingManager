@@ -15,8 +15,10 @@
     </li>
     <li class="list-group-item d-flex justify-content-between align-items-center text-primary font-weight-bold">Estado:
         <div>
-            @if($factura->estado)
+            @if($factura->getEstado($factura->num_factura) == 'pago')
                 <span class="badge badge-success">Pago</span>
+            @elseif($factura->getEstado($factura->num_factura) == 'afavor')
+                <span class="badge badge-warning">Saldo a favor</span>
             @else
                 <span class="badge badge-danger">Pendiente</span>
             @endif
@@ -30,14 +32,15 @@
         creación:
         <span class="text-black-50">{{ date('d/M/Y', strtotime($factura->created_at))  }}</span>
     </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center text-primary font-weight-bold">Valor
-        adeudado:
+    <li class="list-group-item d-flex justify-content-between align-items-center text-primary font-weight-bold">
         @if($factura->valor_adeudado > 0)
-            <span class="text-danger">$ {{ number_format($factura->valor_adeudado) }}</span>
+            Valor
+            adeudado: <span class="text-danger">$ {{ number_format($factura->valor_adeudado) }}</span>
         @elseif($factura->valor_adeudado == 0)
-            <span class="text-success">$ {{ number_format($factura->valor_adeudado) }}</span>
+            Valor
+            adeudado: <span class="text-success">$ {{ number_format($factura->valor_adeudado) }}</span>
         @else
-            Saldo a favor: <span class="text-warning-50">$ {{ number_format($factura->valor_adeudado) }}</span>
+           Saldo a favor: <span class="text-warning"> ${{ number_format($factura->valor_adeudado) }}</span>
         @endif
     </li>
     <li class="list-group-item d-flex justify-content-between align-items-center text-primary font-weight-bold">Valor

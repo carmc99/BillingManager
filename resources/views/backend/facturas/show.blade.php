@@ -16,9 +16,10 @@
                        role="tab" aria-controls="detalle-factura" aria-selected="true">Factura</a>
                     <a class="nav-link" id="detalle-recibo" data-toggle="pill" href="#pila-detalle-recibo"
                        role="tab" aria-controls="pila-detalle-recibo" aria-selected="false">Recibos</a>
-
+                    @if($factura->valor_adeudado > 0)
                     <a class="nav-link" id="registro-recibo" data-toggle="pill" href="#pila-registro-recibo" role="tab"
                        aria-controls="pila-registro-recibo" aria-selected="false">Registrar pago</a>
+                    @endif
                 </div>
             </div>
             <div class="col-md-10">
@@ -33,15 +34,16 @@
                         @include('backend.recibos.detail')
                     </div>
 
-                    <div class="tab-pane fade" id="pila-registro-recibo" role="tabpanel"
-                         aria-labelledby="registro-recibo">
-                        @can('crear_recibos')
-                            @include('backend.recibos.register')
-                        @elsecan()
-                            <span class="text-center bg-danger text-white">Sin permisos</span>
-                        @endcan
-                    </div>
-
+                    @if($factura->valor_adeudado > 0)
+                        <div class="tab-pane fade" id="pila-registro-recibo" role="tabpanel"
+                             aria-labelledby="registro-recibo">
+                            @can('crear_recibos')
+                                @include('backend.recibos.register')
+                            @elsecan()
+                                <span class="text-center bg-danger text-white">Sin permisos</span>
+                            @endcan
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
