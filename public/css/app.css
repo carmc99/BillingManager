@@ -5,7 +5,7 @@
 
 .login,
 .image {
-    min-height: 85vh;
+    min-height: 96.2vh;
 }
 
 .transparent{
@@ -13,10 +13,15 @@
 }
 
 .bg-image {
-    background-image: url('../images/background-image.jpeg');
+    background: url('../images/background-image.jpeg')
+    no-repeat fixed center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
-    background-position: center;
-    background-color: transparent;
+    height: 100%;
+    width: 100% ;
+    text-align: center;
 }
 
 .login-heading {

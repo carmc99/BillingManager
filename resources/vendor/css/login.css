@@ -10,8 +10,10 @@
 
 .bg-image {
     background-image: url('http://digitalimagemakerworld.com/images/business-wallpaper/36365549-business-wallpaper.jpg');
-    background-size: cover;
+    height: 100%;
     background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .login-heading {

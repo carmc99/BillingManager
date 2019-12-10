@@ -2,7 +2,6 @@
 
 
 @section('content')
-    <div class="container-fluid shadow">
         <div class="row no-gutter">
             <div class="d-none d-md-flex col-md-4 col-lg-6"></div>
             <div class="col-md-8 col-lg-6 ">
@@ -46,7 +45,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 
 @endsection
