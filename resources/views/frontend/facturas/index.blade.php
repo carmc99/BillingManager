@@ -25,8 +25,10 @@
                     @foreach($facturas as $factura)
                         <tr class="text-center">
                             <th scope="row">{{ $factura->num_factura }}</th>
-                            @if($factura->estado)
+                            @if($factura->getEstado($factura->num_factura)->first() == 'pago')
                                 <td class="badge badge-success">Pago</td>
+                            @elseif($factura->getEstado($factura->num_factura)->first() == 'afavor')
+                                <td class="badge badge-warning">Saldo a favor</td>
                             @else
                                 <td class="badge badge-danger">Pendiente</td>
                             @endif
