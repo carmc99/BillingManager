@@ -3,10 +3,10 @@
     @if(Auth::check() && Auth::user()->hasRole('Estandar'))
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="{{ action('Frontend\FacturaController@index') }}">Mis facturas</a>
+                <a class="nav-link" href="{{ action('Frontend\FacturaController@index') }}">Facturas</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ action('Frontend\ReciboController@index') }}">Mis recibos</a>
+                <a class="nav-link" href="{{ action('Frontend\ReciboController@index') }}">Recibos</a>
             </li>
         </ul>
     @endif

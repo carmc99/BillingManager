@@ -15,9 +15,9 @@
     </li>
     <li class="list-group-item d-flex justify-content-between align-items-center text-primary font-weight-bold">Estado:
         <div>
-            @if($factura->getEstado($factura->num_factura)->first() == 'pago')
+            @if(App\Models\Factura::getEstado($factura->num_factura)->first() == 'pago')
                 <span class="badge badge-success">Pago</span>
-            @elseif($factura->getEstado($factura->num_factura)->first() == 'afavor')
+            @elseif(App\Models\Factura::getEstado($factura->num_factura)->first() == 'afavor')
                 <span class="badge badge-warning">Saldo a favor</span>
             @else
                 <span class="badge badge-danger">Pendiente</span>

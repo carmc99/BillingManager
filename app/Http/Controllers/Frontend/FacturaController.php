@@ -26,7 +26,7 @@ class FacturaController extends Controller
     public function index()
     {
         $empresa = Auth::user()->empresa_nit;
-        $facturas = DB::table('facturas')->where('empresa_nit', '=',$empresa)->get();
+        $facturas = DB::table('facturas')->where('empresa_nit', '=', $empresa)->get();
         return view('frontend.facturas.index', compact('facturas'));
     }
 
@@ -35,14 +35,14 @@ class FacturaController extends Controller
         $factura = Factura::findOrFail($id);
         $recibos = Recibo::query()->where('factura_id', '=', $factura->num_factura)
             ->where('empresa_nit', '=', $factura->empresa_nit)->get();
-        return view('frontend.facturas.show', compact('factura','recibos'));
+        return view('frontend.facturas.show', compact('factura', 'recibos'));
     }
 
-    public function getFactura($id){
+    public function getFactura($id)
+    {
         $factura = Factura::findOrFail($id);
         $file = storage_path() . '/app/public/' . $factura->ruta_factura;
-        if(file_exists($file))
-        {
+        if (file_exists($file)) {
             return response()->download($file);
         }
         return abort(404);

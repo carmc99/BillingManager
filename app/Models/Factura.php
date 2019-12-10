@@ -40,7 +40,7 @@ class Factura extends Model
         }
     }
 
-    public function getEstado($facturaId)
+    public static function getEstado($facturaId)
     {
         $estadoFactura = DB::table('facturas')->join('estados_factura', 'facturas.estado_id', '=', 'estados_factura.codigo')
             ->where('num_factura', '=', $facturaId)
