@@ -37,6 +37,7 @@ class CreateFacturasTable extends Migration
                 ->onDelete('restrict');
             //$table->boolean('estado');
             $table->dateTime('fecha_facturacion');
+            $table->string('periodo_facturacion', 255);
             $table->timestamps();
             $table->engine = 'InnoDB';
         });

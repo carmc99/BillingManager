@@ -23,6 +23,7 @@ class FacturaTableSeeder extends Seeder
         $factura->descripcion = "Lorem";
         $factura->valor_total = 3486435;
         $factura->valor_adeudado = 1234;
+        $factura->periodo_facturacion = '12/15/2019 - 12/15/2019';
         $factura->estado_id = 1;
         $factura->fecha_facturacion = Carbon::now();
         $factura->created_at = Carbon::now();

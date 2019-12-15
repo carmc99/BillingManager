@@ -11,7 +11,10 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet"/>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
+    <script type="text/javascript" src="{{ asset('js/jquery/jquery.min.js') }}"></script>
+    <script type="text/javascript" src={{  asset('js/datepicker/moment.min.js') }}></script>
+    <script type="text/javascript" src={{  asset('js/datepicker/daterangepicker.min.js') }}></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">

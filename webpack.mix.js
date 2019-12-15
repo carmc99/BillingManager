@@ -12,7 +12,7 @@ const mix = require('laravel-mix');
  */
 
 mix.scripts([
-    'resources/vendor/jquery/jquery.min.js',
+    //'resources/vendor/jquery/jquery.min.js',
     'resources/vendor/bootstrap/js/bootstrap.min.js',
     'resources/vendor/DataTables/datatables.min.js',
     'resources/vendor/DataTables/datatableConfig.js',

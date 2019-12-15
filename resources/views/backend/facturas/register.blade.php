@@ -44,6 +44,15 @@
                 </div>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
+                <label for="input-periodo-facturacion" class="control-label">Periodo facturación:</label>
+                <div class="col-md-9">
+                        <input type="text" class="form-control" id="periodo-facturacion" name="periodo-facturacion" required>
+                </div>
+            </li>
+            <script>
+                $('#periodo-facturacion').daterangepicker();
+            </script>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
                 <label for="input-descripcion" class="control-label">Descripcion:</label>
                 <div class="col-md-9">
                     <textarea class="form-control" rows="3" name="descripcion" id="descripcion"></textarea>

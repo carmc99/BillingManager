@@ -56,6 +56,7 @@ class FacturaController extends Controller
             'num-factura' => 'min:3|max:30|required|unique:facturas,num_factura',
             'cliente' => 'required|min:3|max:30',
             'generador' => 'required|min:3|max:30',
+            'periodo-facturacion' => 'required',
             'descripcion' => 'max:300',
             'fecha-factura' => 'required|date',
             'file' => 'required|max:10000|mimes:doc,docx,pdf'
@@ -69,6 +70,7 @@ class FacturaController extends Controller
         $factura->valor_adeudado = $request->input('valor');
         $factura->empresa_generadora_nit = $request->input('generador');
         $factura->fecha_facturacion = $request->input('fecha-factura');
+        $factura->periodo_facturacion = $request->input('periodo-facturacion');
         $factura->ruta_factura = $factura->guardarFactura($request->file('file'), $request->input('cliente'));
         $factura->estado_id = 3; //Pendiente
         $factura->saveOrFail();

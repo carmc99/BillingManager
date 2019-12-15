@@ -23,6 +23,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Empresa</th>
                 <th scope="col">Estado</th>
+                <th scope="col">Periodo</th>
                 <th scope="col">Descripcion</th>
                 <th scope="col">Valor total</th>
                 <th>Fecha creación</th>
@@ -42,7 +43,7 @@
                     @else
                         <td class="badge badge-danger">Pendiente</td>
                     @endif
-
+                    <td>{{ $factura->periodo_facturacion }}</td>
                     <td>{{ $factura->descripcion }}</td>
                     <td>${{ number_format($factura->valor_total) }}</td>
                     <td>{{ date('d/M/Y', strtotime($factura->created_at)) }}</td>

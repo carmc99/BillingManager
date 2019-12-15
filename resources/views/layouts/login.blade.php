@@ -25,8 +25,8 @@
             @yield('content')
         </div>
     </main>
-    <footer>
-        <div class="row mr-0 ">
+    <footer class="bg-primary" style=" max-height: 45px; min-height: 38px;">
+        <div class="row mr-0">
             <div class="col-md-12 bg-primary text-center shadow">
                 <div class="text-white text-center ">Copyright © 2019 Sigeef | Medellín - Colombia.
                 </div>
