@@ -33,4 +33,14 @@ Route::group(['middleware' => ['role_or_permission:Administrador']], function ()
     Route::get('downloadRecibo/{filename}', 'Backend\ReciboController@getFile');
     Route::resource('adminrecibos', 'Backend\ReciboController');
     #Route::post('adminfacturas/{id}/', 'Backend\ReciboController@store');
+
+    // Estadisticas
+    Route::get('/stats', 'Backend\Stats\HomeChartController@index');
+    Route::get('/usersStats', 'Backend\Stats\UserChartController@index');
+    Route::get('/recibosStats', 'Backend\Stats\ReciboChartController@index');
+    Route::get('/facturasStats', 'Backend\Stats\FacturaChartController@index');
+    Route::get('/empresasStats', 'Backend\Stats\EmpresaChartController@index');
+
 });
+
+

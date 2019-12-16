@@ -43,8 +43,28 @@
 
             <ul class="nav flex-column bg-white mb-0">
                 <li class="nav-item">
+                    <a href="{{ action('Backend\Stats\HomeChartController@index') }}" class="nav-link text-dark bg-light">
+                        Estadisticas generales
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ action('Backend\Stats\UserChartController@index') }}" class="nav-link text-dark bg-light">
+                        Usuarios
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ action('Backend\Stats\FacturaChartController@index') }}" class="nav-link text-dark bg-light">
+                        Facturas
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ action('Backend\StatsController@index') }}" class="nav-link text-dark bg-light">
-                        Ver estadisticas
+                        Empresas
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ action('Backend\Stats\ReciboChartController@index') }}" class="nav-link text-dark bg-light">
+                        Recibos
                     </a>
                 </li>
 
