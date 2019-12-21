@@ -48,11 +48,6 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ action('Backend\Stats\UserChartController@index') }}" class="nav-link text-dark bg-light">
-                        Usuarios
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a href="{{ action('Backend\Stats\FacturaChartController@index') }}" class="nav-link text-dark bg-light">
                         Facturas
                     </a>
@@ -60,11 +55,6 @@
                 <li class="nav-item">
                     <a href="{{ action('Backend\StatsController@index') }}" class="nav-link text-dark bg-light">
                         Empresas
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ action('Backend\Stats\ReciboChartController@index') }}" class="nav-link text-dark bg-light">
-                        Recibos
                     </a>
                 </li>
 

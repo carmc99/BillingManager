@@ -14,6 +14,7 @@
     <script type="text/javascript" src="{{ asset('js/jquery/jquery.min.js') }}"></script>
     <script type="text/javascript" src={{  asset('js/datepicker/moment.min.js') }}></script>
     <script type="text/javascript" src={{  asset('js/datepicker/daterangepicker.min.js') }}></script>
+    <script type="text/javascript" src={{  asset('js/popper/popper.min.js') }}></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -52,9 +53,5 @@
         </div>
     </main>
 </div>
-
-@if($chart ?? '')
-    {!! $chart->script() !!}
-@endif
 </body>
 </html>
