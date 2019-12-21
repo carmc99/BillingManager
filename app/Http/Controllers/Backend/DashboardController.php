@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Charts\QueryProvider\EmpresaReporte;
+use App\Charts\QueryProvider\FacturaReporte;
+
 class DashboardController extends Controller
 {
     /**
@@ -18,7 +21,8 @@ class DashboardController extends Controller
 
     public function index()
     {
-        return view('backend.home');
+
+        return view('backend.home', compact('topEmpresasDeudoras'));
     }
 
     /**

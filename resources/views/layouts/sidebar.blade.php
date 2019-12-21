@@ -47,17 +47,6 @@
                         Estadisticas generales
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="{{ action('Backend\Stats\FacturaChartController@index') }}" class="nav-link text-dark bg-light">
-                        Facturas
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ action('Backend\StatsController@index') }}" class="nav-link text-dark bg-light">
-                        Empresas
-                    </a>
-                </li>
-
             </ul>
         </div>
     </div>

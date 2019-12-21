@@ -14,7 +14,7 @@
 }
 
 .bg-image {
-    background-image: url('../images/background-image.jpeg');
+    background-image: url('../images/background-image.png');
     background-size: cover;
     background-position: center;
     background-color: transparent;

@@ -4,6 +4,7 @@
 namespace App\Charts\QueryProvider;
 
 
+use App\Models\Factura;
 use Illuminate\Support\Facades\DB;
 
 class FacturaReporte
@@ -67,5 +68,11 @@ class FacturaReporte
                 ->where('empresa_generadora_nit', '=', $this->generador)
                 ->sum('valor_total');
         }
+    }
+
+    public function getUltimasFacturasRegistradas(){
+        return Factura::orderBy('id', 'DESC')
+            ->take(5)
+            ->get();
     }
 }

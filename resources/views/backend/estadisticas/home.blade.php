@@ -32,7 +32,7 @@
                     <h5 class="card-title">Total</h5>
                     <p class="card-text">12</p>
                 </div>
-                <a class="card-footer bg-primary text-white" href="#">Ver detalle</a>
+                <a class="card-footer bg-primary text-white" href="{{ action('Backend\Stats\EmpresaChartController@index') }}">Ver detalle</a>
             </div>
         </div>
         <div class="col-md-3">
@@ -40,9 +40,9 @@
                 <div class="card-header text-white">Facturas</div>
                 <div class="card-body text-white">
                     <h5 class="card-title">Total</h5>
-                    <p class="card-text">{{ $totalFacturas }}</p>
+                    <p class="card-text">{{ number_format($totalFacturas) }}</p>
                 </div>
-                <a class="card-footer bg-warning text-white" href="#">Ver detalle</a>
+                <a class="card-footer bg-warning text-white" href="{{ action('Backend\Stats\FacturaChartController@index') }}">Ver detalle</a>
             </div>
         </div>
         <div class="col-md-3">
@@ -50,19 +50,19 @@
                 <div class="card-header text-white">Facturas</div>
                 <div class="card-body text-white">
                     <h5 class="card-title">Total pendiente de pago</h5>
-                    <p class="card-text">$ {{ $totalSaldoPendienteFacturas }}</p>
+                    <p class="card-text">$ {{ number_format($totalSaldoPendienteFacturas) }}</p>
                 </div>
-                <a class="card-footer bg-danger text-white" href="#">Ver detalle</a>
+                <a class="card-footer bg-danger text-white" href="{{ action('Backend\Stats\FacturaChartController@index') }}">Ver detalle</a>
             </div>
         </div>
         <div class="col-md-3">
             <div class="card border-white bg-success mb-1" style="max-width: 18rem;">
-                <div class="card-header text-white">Recibos</div>
+                <div class="card-header text-white">Facturas</div>
                 <div class="card-body text-white">
                     <h5 class="card-title">Total pago</h5>
-                    <p class="card-text">$ {{ $totalSaldoPagoFacturas }}</p>
+                    <p class="card-text">$ {{ number_format($totalSaldoPagoFacturas) }}</p>
                 </div>
-                <a class="card-footer bg-success text-white" href="#">Ver detalle</a>
+                <a class="card-footer bg-success text-white" href="{{ action('Backend\Stats\FacturaChartController@index') }}">Ver detalle</a>
             </div>
         </div>
     </div>
