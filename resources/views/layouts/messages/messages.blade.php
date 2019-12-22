@@ -30,3 +30,23 @@
     </div>
 @endif
 
+@if(session('usuariosAsociadosAlert'))
+    <div class="form-group">
+        @foreach(session('usuariosAsociadosAlert')->all() as $data)
+            <div class="alert alert-danger">
+                <span>El registro que intenta eliminar posee un usuario asociado: {{ $data->name }}</span>
+            </div>
+        @endforeach
+    </div>
+@endif
+
+@if(session('facturasAsociadasAlert'))
+    <div class="form-group">
+        @foreach(session('facturasAsociadasAlert')->all() as $data)
+            <div class="alert alert-danger">
+                <span>El registro que intenta eliminar posee una factura asociada: {{ $data->num_factura }}</span>
+            </div>
+        @endforeach
+    </div>
+@endif
+

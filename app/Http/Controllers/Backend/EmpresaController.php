@@ -124,7 +124,18 @@ class EmpresaController extends Controller
      */
     public function destroy($id)
     {
+        $usuariosAsociados = DB::table('users')->select('name')->where('empresa_nit','=', $id)->get();
+        $facturasAsociadas = DB::table('facturas')->select('num_factura')->where('empresa_nit','=', $id)->get();
+        if(count($usuariosAsociados) != 0)
+        {
+            return redirect()->back()->with('usuariosAsociadosAlert', $usuariosAsociados);
+        }
+        if(count($facturasAsociadas) != 0){
+            return redirect()->back()->with('facturasAsociadasAlert', $facturasAsociadas);
+        }
+
         DB::table('empresas')->where('nit', $id)->limit(1)->delete();
+
         return redirect()->back()->with('message', 'Registro eliminado exitosamente');
     }
 }
