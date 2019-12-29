@@ -440,7 +440,14 @@ class ComposerStaticInitb31aae73b6a5cfa3369d4aef35fa6ebc
     );
 
     public static $classMap = array (
+        'App\\Charts\\EstadoCuentaChart' => __DIR__ . '/../..' . '/app/Charts/EstadoCuentaChart.php',
+        'App\\Charts\\FacturaChart' => __DIR__ . '/../..' . '/app/Charts/FacturaChart.php',
+        'App\\Charts\\GeneralChart' => __DIR__ . '/../..' . '/app/Charts/GeneralChart.php',
+        'App\\Charts\\QueryProvider\\EmpresaReporte' => __DIR__ . '/../..' . '/app/Charts/QueryProvider/EmpresaReporte.php',
+        'App\\Charts\\QueryProvider\\EstadoDeCuenta' => __DIR__ . '/../..' . '/app/Charts/QueryProvider/EstadoDeCuenta.php',
+        'App\\Charts\\QueryProvider\\FacturaReporte' => __DIR__ . '/../..' . '/app/Charts/QueryProvider/FacturaReporte.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\Evento' => __DIR__ . '/../..' . '/app/Evento.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -456,7 +463,6 @@ class ComposerStaticInitb31aae73b6a5cfa3369d4aef35fa6ebc
         'App\\Http\\Controllers\\Backend\\Stats\\EmpresaChartController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/Stats/EmpresaChartController.php',
         'App\\Http\\Controllers\\Backend\\Stats\\FacturaChartController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/Stats/FacturaChartController.php',
         'App\\Http\\Controllers\\Backend\\Stats\\HomeChartController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/Stats/HomeChartController.php',
-        'App\\Http\\Controllers\\Backend\\Stats\\UserChartController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/Stats/UserChartController.php',
         'App\\Http\\Controllers\\Backend\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/UserController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\Frontend\\FacturaController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/FacturaController.php',

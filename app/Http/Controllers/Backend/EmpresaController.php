@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Evento;
 use Illuminate\Http\Request;
 use App\Models\Empresa;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 
@@ -60,7 +62,8 @@ class EmpresaController extends Controller
         $empresa->direccion = $request->input('direccion');
         $empresa->telefono = $request->input('telefono');
         $empresa->saveOrFail();
-
+        $evento = new Evento();
+        $evento->registrarEvento('Registro empresa', 'Registro empresa con identificación: ' . $empresa->nit, $empresa->nit, Auth::user()->name);
         return redirect()->back()->with('message', 'Registro ingresado exitosamente');
     }
 
@@ -112,7 +115,8 @@ class EmpresaController extends Controller
                 'direccion' => $request->input('direccion'),
                 'telefono' => $request->input('telefono'),
         ]);
-
+        $evento = new Evento();
+        $evento->registrarEvento('Actualizo empresa', 'Actualizo empresa con identificación: ' . $id, $id, Auth::user()->name);
         return redirect()->back()->with('message', 'Registro actualizado exitosamente');
     }
 
@@ -133,9 +137,10 @@ class EmpresaController extends Controller
         if(count($facturasAsociadas) != 0){
             return redirect()->back()->with('facturasAsociadasAlert', $facturasAsociadas);
         }
-
+        $empresa = DB::table('empresas')->where('nit', $id)->first();
+        $evento = new Evento();
+        $evento->registrarEvento('Elimino empresa', 'Elimino empresa con identificación: ' . $id . ', Nombre: ' . $empresa->nombre, $id, Auth::user()->name);
         DB::table('empresas')->where('nit', $id)->limit(1)->delete();
-
         return redirect()->back()->with('message', 'Registro eliminado exitosamente');
     }
 }

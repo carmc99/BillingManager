@@ -16,7 +16,7 @@
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <label for="input-num-factura" class="control-label">Número factura:</label>
                 <div class="col-md-9">
-                    <input type="number" class="form-control" id="num-factura" name="num-factura"
+                    <input type="text" class="form-control" id="num-factura" name="num-factura"
                            value="{{ $factura->num_factura }}" required>
                 </div>
             </li>

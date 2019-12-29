@@ -28,6 +28,12 @@
         facturación:
         <span class="text-black-50">{{ date('d/M/Y', strtotime($factura->fecha_facturacion)) }}</span>
     </li>
+
+    <li class="list-group-item d-flex justify-content-between align-items-center text-primary font-weight-bold">Periodo
+        facturación:
+        <span class="text-black-50">{{ $factura->periodo_facturacion }}</span>
+    </li>
+
     <li class="list-group-item d-flex justify-content-between align-items-center text-primary font-weight-bold">Fecha
         creación:
         <span class="text-black-50">{{ date('d/M/Y', strtotime($factura->created_at))  }}</span>

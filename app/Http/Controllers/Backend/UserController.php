@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Evento;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
@@ -65,7 +67,8 @@ class UserController extends Controller
         $usuario->password = Hash::make($request->input('contraseña'));
         $usuario->save();
         $usuario->assignRole($request->input('rol'));
-
+        $evento = new Evento();
+        $evento->registrarEvento('Registro usuario', 'Registro usuario con identificación: ' . $usuario->identificacion . ', Rol: ' . $usuario->getRoleNames() . ' , Empresa: ' . $usuario->empresa_nit, $usuario->identificacion, Auth::user()->name);
         return redirect()->back()->with('message', 'Registro ingresado exitosamente');
     }
 
@@ -118,7 +121,6 @@ class UserController extends Controller
         $usuario->identificacion = $request->input('identificacion');
         $usuario->email = $request->input('email');
         $usuario->empresa_nit = $request->input('empresa');
-        var_dump($request->all());
         if ($request->input('rol') == 'Administrador' || $request->input('rol') == 'Estandar' )
         {
             $usuario->removeRole($usuario->getRoleNames()->first());
@@ -129,7 +131,8 @@ class UserController extends Controller
             $usuario->password = Hash::make($request->input('contraseña'));
         }
         $usuario->update();
-
+        $evento = new Evento();
+        $evento->registrarEvento('Actualizo usuario', 'Actualizo usuario con identificación: ' . $usuario->identificacion . ' , Empresa: ' . $usuario->empresa_nit, $usuario->identificacion, Auth::user()->name);
         return redirect()->back()->with('message', 'Registro: ' . $usuario->name . ' actualizado exitosamente');
     }
 
@@ -141,7 +144,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::findOrfail($id)->delete();
+        $usuario = User::findOrfail($id);
+        $evento = new Evento();
+        $evento->registrarEvento('Elimino usuario', 'Elimino usuario con identificación: ' . $usuario->identificacion . ' , Empresa: ' . $usuario->empresa_nit, $usuario->identificacion, Auth::user()->name);
+        $usuario->delete();
         return redirect()->back();
     }
 }

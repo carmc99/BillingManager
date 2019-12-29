@@ -9,10 +9,12 @@ use App\Models\User;
 use Faker\Generator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use function MongoDB\BSON\toJSON;
 use Yoeunes\Toastr\Toastr;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Evento;
 
 class FacturaController extends Controller
 {
@@ -74,7 +76,8 @@ class FacturaController extends Controller
         $factura->ruta_factura = $factura->guardarFactura($request->file('file'), $request->input('cliente'));
         $factura->estado_id = 3; //Pendiente
         $factura->saveOrFail();
-
+        $evento = new Evento();
+        $evento->registrarEvento('Registro factura', 'Registro factura número: ' . $factura->num_factura . ' , Empresa: ' . $factura->empresa_nit, $factura->num_factura, Auth::user()->name);
 
         return redirect()->back()->with('message', 'Registro ingresado exitosamente');
     }
@@ -104,6 +107,7 @@ class FacturaController extends Controller
         $empresasGeneradoras = EmpresaGeneradora::query()->orderBy('nombre')->get();
         $empresas = Empresa::query()->orderBy('nombre')->get();
         $factura = Factura::findOrFail($id);
+        
         return view('backend.facturas.edit', compact('factura', 'empresas', 'empresasGeneradoras'));
     }
 
@@ -117,7 +121,8 @@ class FacturaController extends Controller
     public function update(Request $request, $id)
     {
         $factura = Factura::findOrfail($id);
-
+        $evento = new Evento();
+        $evento->registrarEvento('Actualización factura', 'Actualizo factura número: ' . $factura->num_factura . ' , Empresa: ' . $factura->empresa_nit, $factura->num_factura, Auth::user()->name);
         return redirect()->back()->with('message', 'Registro: ' . $factura->num_pago . ' actualizado exitosamente');
     }
 
@@ -136,6 +141,8 @@ class FacturaController extends Controller
         }
 
         $factura->eliminarFactura($factura->ruta_factura);
+        $evento = new Evento();
+        $evento->registrarEvento('Elimino factura', 'Elimino factura número: ' . $factura->num_factura . ' , Empresa: ' . $factura->empresa_nit, $factura->num_factura, Auth::user()->name);
         $factura->delete();
         return redirect()->back()->with('message', 'Registro eliminado exitosamente');
     }

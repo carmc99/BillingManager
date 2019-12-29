@@ -6,7 +6,14 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Charts\\EstadoCuentaChart' => $baseDir . '/app/Charts/EstadoCuentaChart.php',
+    'App\\Charts\\FacturaChart' => $baseDir . '/app/Charts/FacturaChart.php',
+    'App\\Charts\\GeneralChart' => $baseDir . '/app/Charts/GeneralChart.php',
+    'App\\Charts\\QueryProvider\\EmpresaReporte' => $baseDir . '/app/Charts/QueryProvider/EmpresaReporte.php',
+    'App\\Charts\\QueryProvider\\EstadoDeCuenta' => $baseDir . '/app/Charts/QueryProvider/EstadoDeCuenta.php',
+    'App\\Charts\\QueryProvider\\FacturaReporte' => $baseDir . '/app/Charts/QueryProvider/FacturaReporte.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
+    'App\\Evento' => $baseDir . '/app/Evento.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -22,7 +29,6 @@ return array(
     'App\\Http\\Controllers\\Backend\\Stats\\EmpresaChartController' => $baseDir . '/app/Http/Controllers/Backend/Stats/EmpresaChartController.php',
     'App\\Http\\Controllers\\Backend\\Stats\\FacturaChartController' => $baseDir . '/app/Http/Controllers/Backend/Stats/FacturaChartController.php',
     'App\\Http\\Controllers\\Backend\\Stats\\HomeChartController' => $baseDir . '/app/Http/Controllers/Backend/Stats/HomeChartController.php',
-    'App\\Http\\Controllers\\Backend\\Stats\\UserChartController' => $baseDir . '/app/Http/Controllers/Backend/Stats/UserChartController.php',
     'App\\Http\\Controllers\\Backend\\UserController' => $baseDir . '/app/Http/Controllers/Backend/UserController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\Frontend\\FacturaController' => $baseDir . '/app/Http/Controllers/Frontend/FacturaController.php',

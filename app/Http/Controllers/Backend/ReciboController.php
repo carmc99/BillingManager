@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Backend;
 
 use App\Models\Empresa;
 use App\Models\EmpresaGeneradora;
+use App\Models\Evento;
 use App\Models\Factura;
 use App\Models\Recibo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ReciboController extends Controller
 {
@@ -71,7 +73,8 @@ class ReciboController extends Controller
             return redirect()->back()->with('error', 'El valor del recibo supera el valor de la factura');
         }
         $recibo->save();
-
+        $evento = new Evento();
+        $evento->registrarEvento('Registro recibo', 'Registro recibo número: ' . $recibo->num_recibo . ' , Empresa: ' . $recibo->empresa_nit, $recibo->num_factura, Auth::user()->name);
         return redirect()->back()->with('message', 'Registro ingresado exitosamente');
     }
 
@@ -130,6 +133,8 @@ class ReciboController extends Controller
             $factura->update();
         }
         $recibo->eliminarRecibo($recibo->ruta_recibo);
+        $evento = new Evento();
+        $evento->registrarEvento('Elimino recibo', 'Elimino recibo número: ' . $recibo->num_recibo . ' , Empresa: ' . $recibo->empresa_nit, $recibo->num_factura, Auth::user()->name);
         $recibo->delete();
         return redirect()->back();
     }

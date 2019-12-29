@@ -27,7 +27,7 @@
     <div class="row m-2">
         <div class="col-md-3">
             <div class="card border-white bg-primary mb-1" style="max-width: 18rem;">
-                <div class="card-header text-white">Empresas</div>
+                <div class="card-header text-white font-weight-bold">Empresas</div>
                 <div class="card-body text-white">
                     <h5 class="card-title">Total</h5>
                     <p class="card-text">12</p>
@@ -37,7 +37,7 @@
         </div>
         <div class="col-md-3">
             <div class="card border-white bg-warning mb-1" style="max-width: 18rem;">
-                <div class="card-header text-white">Facturas</div>
+                <div class="card-header text-white font-weight-bold">Facturas</div>
                 <div class="card-body text-white">
                     <h5 class="card-title">Total</h5>
                     <p class="card-text">{{ number_format($totalFacturas) }}</p>
@@ -47,7 +47,7 @@
         </div>
         <div class="col-md-3">
             <div class="card border-white bg-danger mb-1" style="max-width: 18rem;">
-                <div class="card-header text-white">Facturas</div>
+                <div class="card-header text-white font-weight-bold">Facturas</div>
                 <div class="card-body text-white">
                     <h5 class="card-title">Total pendiente de pago</h5>
                     <p class="card-text">$ {{ number_format($totalSaldoPendienteFacturas) }}</p>
@@ -57,7 +57,7 @@
         </div>
         <div class="col-md-3">
             <div class="card border-white bg-success mb-1" style="max-width: 18rem;">
-                <div class="card-header text-white">Facturas</div>
+                <div class="card-header text-white font-weight-bold">Facturas</div>
                 <div class="card-body text-white">
                     <h5 class="card-title">Total pago</h5>
                     <p class="card-text">$ {{ number_format($totalSaldoPagoFacturas) }}</p>

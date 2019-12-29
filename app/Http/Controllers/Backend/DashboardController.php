@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Charts\QueryProvider\EmpresaReporte;
 use App\Charts\QueryProvider\FacturaReporte;
+use App\Models\Evento;
 
 class DashboardController extends Controller
 {
@@ -21,8 +22,12 @@ class DashboardController extends Controller
 
     public function index()
     {
+        $empresaReporte = new EmpresaReporte();
+        $topEmpresasDeudoras = $empresaReporte->topDeudores();
+        $evento = new Evento();
+        $eventos = $evento->obtenerEventos();
 
-        return view('backend.home', compact('topEmpresasDeudoras'));
+        return view('backend.dashboard', compact('topEmpresasDeudoras', 'eventos'));
     }
 
     /**

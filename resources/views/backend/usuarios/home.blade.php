@@ -20,7 +20,7 @@
         <table class="table table-responsive-lg" id="tabla-facturas">
             <thead>
             <tr class="text-center">
-                <th scope="col">#</th>
+                <th scope="col">Identificación</th>
                 <th scope="col">Nombre</th>
                 <th>Rol</th>
                 <th scope="col">Email</th>
@@ -32,7 +32,7 @@
             <tbody>
             @foreach($usuarios as $usuario)
                 <tr class="text-center">
-                    <th scope="row">{{ $usuario->id }}</th>
+                    <th scope="row">{{ $usuario->identificacion }}</th>
                     <td>{{ $usuario->name }}</td>
                     <td>{{ $usuario->getRoleNames()->first() }}</td>
                     <td>{{ $usuario->email }}</td>
