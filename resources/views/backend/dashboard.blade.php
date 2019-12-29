@@ -63,6 +63,7 @@
             <div class="col-md-6">
                 <div class="list-group">
                     <li class="list-group-item active font-weight-bold">Ultimas entradas</li>
+                    @if($eventos)
                     @foreach($eventos as $item)
                         <div class="list-group-item list-group-item-action flex-column align-items-start">
                             <div class="d-flex w-100 justify-content-between">
@@ -80,6 +81,13 @@
                             <span><span class="font-weight-bold">Autor: </span>{{ $item->autor }}</span>
                         </div>
                     @endforeach
+                        @else
+                        <div class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-center">
+                                    No existen registros para mostrar
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
 
