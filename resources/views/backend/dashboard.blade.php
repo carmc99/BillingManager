@@ -14,23 +14,35 @@
                     <div class="col-md-6">
                         <ul class="list-group m-2">
                             <li class="list-group-item bg-danger text-white font-weight-bold">Top deudores mes</li>
+                            @if($topEmpresasDeudoras)
                             @foreach($topEmpresasDeudoras as $item)
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     {{ $item->nombre }}
                                     <span class="badge badge-danger badge-pill">{{ $item->cantFacturas }}</span>
                                 </li>
                             @endforeach
+                            @else
+                                <li class="list-group-item d-flex justify-content-center">
+                                    No existen registros para mostrar
+                                </li>
+                            @endif
                         </ul>
                     </div>
                     <div class="col-md-6">
                         <ul class="list-group m-2">
                             <li class="list-group-item bg-danger text-white font-weight-bold">Top deudores historico</li>
+                            @if($topEmpresasDeudoras)
                             @foreach($topEmpresasDeudoras as $item)
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     {{ $item->nombre }}
                                     <span class="badge badge-danger badge-pill">{{ $item->cantFacturas }}</span>
                                 </li>
                             @endforeach
+                            @else
+                                <li class="list-group-item d-flex justify-content-center">
+                                    No existen registros para mostrar
+                                </li>
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -38,23 +50,35 @@
                     <div class="col-md-6">
                         <ul class="list-group m-2">
                             <li class="list-group-item bg-danger text-white font-weight-bold">Top deudores mes</li>
+                            @if($topEmpresasDeudoras)
                             @foreach($topEmpresasDeudoras as $item)
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     {{ $item->nombre }}
                                     <span class="badge badge-danger badge-pill">{{ $item->cantFacturas }}</span>
                                 </li>
                             @endforeach
+                            @else
+                                <li class="list-group-item d-flex justify-content-center">
+                                    No existen registros para mostrar
+                                </li>
+                            @endif
                         </ul>
                     </div>
                     <div class="col-md-6">
                         <ul class="list-group m-2">
                             <li class="list-group-item bg-danger text-white font-weight-bold">Top deudores mes</li>
+                            @if($topEmpresasDeudoras)
                             @foreach($topEmpresasDeudoras as $item)
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     {{ $item->nombre }}
                                     <span class="badge badge-danger badge-pill">{{ $item->cantFacturas }}</span>
                                 </li>
                             @endforeach
+                            @else
+                                <li class="list-group-item d-flex justify-content-center">
+                                    No existen registros para mostrar
+                                </li>
+                            @endif
                         </ul>
                     </div>
                 </div>
